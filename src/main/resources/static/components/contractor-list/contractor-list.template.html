@@ -1,0 +1,45 @@
+<md-content>
+  <md-card>
+    <md-card-header translate="CONTRACTORS_MENU_LABEL">
+    </md-card-header>
+    
+	<div ng-show="$ctrl.Authentication.enableEdit">
+	  <md-card-actions layout="row" layout-align="start">
+	    <md-button href="#!/contractors/0" translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}" class="md-raised"></md-button>
+	  </md-card-actions>
+	</div>
+    
+    <md-card-content>
+	  <table ng-table="$ctrl.contractors" show-filter="true" class="table table-condensed table-striped table-bordered">
+	    <tr ng-repeat="contractor in $data">
+	      <td title="'CONTRACTORS_TABLE_NAME_LABEL' | translate" filter="{ name: 'text' }" sortable="'name'" ng-attr-title="{{contractor.name}}">
+	        {{contractor.name}}
+	      </td>
+	      <td title="'CONTRACTORS_TABLE_ADDRESS_LABEL' | translate" filter="{ address: 'text' }" sortable="'address'" ng-attr-title="{{contractor.address}}">
+	        {{contractor.address}}
+	      </td>
+	      <td title="'CONTRACTORS_TABLE_REG_NUMBER_LABEL' | translate" filter="{ regNumber: 'text' }" sortable="'regNumber'" ng-attr-title="{{contractor.regNumber}}">
+	        {{contractor.regNumber}}
+	      </td>
+	      <td title="'CONTRACTORS_TABLE_CONTACT_DETAILS_LABEL' | translate" filter="{ contactDetails: 'text' }" sortable="'contactDetails'" ng-attr-title="{{contractor.contactDetails}}">
+	        {{contractor.contactDetails}}
+	      </td>
+	      <td>
+	        <div layout="row">
+	          <md-button href="#!/contractors/{{contractor.id}}" aria-label="{{'EDIT_LABEL' | translate}}" class="md-icon-button">
+	            <md-icon md-svg-icon="img/icons/baseline-edit-24px.svg"></md-icon>
+	            <md-tooltip>{{'EDIT_LABEL' | translate}}</md-tooltip>
+	          </md-button>
+	          <div ng-show="$ctrl.Authentication.enableEdit">
+	            <md-button ng-click="$ctrl.deleteContractor(contractor.id)" aria-label="{{'DELETE_LABEL' | translate}}" class="md-icon-button">
+	              <md-tooltip>{{'DELETE_LABEL' | translate}}</md-tooltip>
+	              <md-icon md-svg-icon="img/icons/baseline-delete-24px.svg"></md-icon>
+	            </md-button>
+	          </div>
+	        </div>
+	      </td>
+	    </tr>
+	  </table>
+	</md-card-content>
+  </md-card>
+</md-content>

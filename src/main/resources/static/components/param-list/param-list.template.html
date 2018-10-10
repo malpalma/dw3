@@ -1,0 +1,103 @@
+<md-content>
+  <md-card>
+    <div ng-show="$ctrl.type == 'tr'">
+      <md-card-header translate="TAX_RATES_MENU_LABEL">
+      </md-card-header>
+    </div>
+    <div ng-show="$ctrl.type == 'pm'">
+      <md-card-header translate="PAYMENT_METHODS_MENU_LABEL">
+      </md-card-header>
+    </div>
+    <div ng-show="$ctrl.type == 'ut'">
+      <md-card-header translate="UNIT_TYPES_MENU_LABEL">
+      </md-card-header>
+    </div>
+
+	<div ng-show="$ctrl.Authentication.enableEdit">
+	  <md-card-actions layout="row" layout-align="start">
+	    <md-button href="#!/params/{{$ctrl.type}}/id/0" translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}"class="md-raised"></md-button>
+	  </md-card-actions>
+	</div>
+
+    <md-card-content>
+      <div ng-show="$ctrl.type == 'tr'">
+	    <table ng-table="$ctrl.params" show-filter="true" class="table table-condensed table-striped table-bordered">
+	      <tr ng-repeat="param in $data">
+	        <td title="'PARAMS_TABLE_DESCRIPTION_LABEL' | translate" filter="{ description: 'text' }" sortable="'description'" ng-attr-title="{{param.description}}">
+	          {{param.description}}
+	        </td>
+	        <td title="'PARAMS_TABLE_TAX_RATE_VALUE_LABEL' | translate" sortable="'value'" class="text-right" ng-attr-title="{{param.value | number: 2}}">
+	          {{param.value | number: 2}}
+	        </td>
+	        <td>
+	          <div layout="row">
+	            <md-button href="#!/params/{{$ctrl.type}}/id/{{param.id}}" aria-label="{{'EDIT_LABEL' | translate}}" class="md-icon-button">
+	              <md-tooltip>{{'EDIT_LABEL' | translate}}</md-tooltip>
+                  <md-icon md-svg-icon="img/icons/baseline-edit-24px.svg"></md-icon>
+	            </md-button>
+	            <div ng-show="$ctrl.Authentication.enableEdit">
+	              <md-button ng-click="$ctrl.deleteParam(param.id)" aria-label="{{'DELETE_LABEL' | translate}}" class="md-icon-button">
+	                <md-tooltip>{{'DELETE_LABEL' | translate}}</md-tooltip>
+	                <md-icon md-svg-icon="img/icons/baseline-delete-24px.svg"></md-icon>
+	              </md-button>
+	            </div>
+	          </div>
+	        </td>
+	      </tr>
+	    </table>
+      </div>
+      <div ng-show="$ctrl.type == 'pm'">
+	    <table ng-table="$ctrl.params" show-filter="true" class="table table-condensed table-striped table-bordered">
+	      <tr ng-repeat="param in $data">
+	        <td title="'PARAMS_TABLE_DESCRIPTION_LABEL' | translate" filter="{ description: 'text' }" sortable="'description'" ng-attr-title="{{param.description}}">
+	          {{param.description}}
+	        </td>
+	        <td title="'PARAMS_TABLE_PAYMENT_METHOD_VALUE_LABEL' | translate" sortable="'value'" class="text-right" ng-attr-title="{{param.value | number: 0}}">
+	          {{param.value | number: 0}}
+	        </td>
+	        <td>
+	          <div layout="row">
+	            <md-button href="#!/params/{{$ctrl.type}}/id/{{param.id}}" aria-label="{{'EDIT_LABEL' | translate}}" class="md-icon-button">
+	              <md-tooltip>{{'EDIT_LABEL' | translate}}</md-tooltip>
+                  <md-icon md-svg-icon="img/icons/baseline-edit-24px.svg"></md-icon>
+	            </md-button>
+	            <div ng-show="$ctrl.Authentication.enableEdit">
+	              <md-button ng-click="$ctrl.deleteParam(param.id)" aria-label="{{'DELETE_LABEL' | translate}}" class="md-icon-button">
+	                <md-tooltip>{{'DELETE_LABEL' | translate}}</md-tooltip>
+	                <md-icon md-svg-icon="img/icons/baseline-delete-24px.svg"></md-icon>
+	              </md-button>
+	            </div>
+	          </div>
+	        </td>
+	      </tr>
+	    </table>
+      </div>
+      <div ng-show="$ctrl.type == 'ut'">
+	    <table ng-table="$ctrl.params" show-filter="true" class="table table-condensed table-striped table-bordered">
+	      <tr ng-repeat="param in $data">
+	        <td title="'PARAMS_TABLE_CODE_LABEL' | translate" filter="{ code: 'text' }" sortable="'code'" ng-attr-title="{{param.code}}">
+	          {{param.code}}
+	        </td>
+	        <td title="'PARAMS_TABLE_DESCRIPTION_LABEL' | translate" filter="{ description: 'text' }" sortable="'description'" ng-attr-title="{{param.description}}">
+	          {{param.description}}
+	        </td>
+	        <td>
+	          <div layout="row">
+	            <md-button href="#!/params/{{$ctrl.type}}/id/{{param.id}}" aria-label="{{'EDIT_LABEL' | translate}}" class="md-icon-button">
+	              <md-tooltip>{{'EDIT_LABEL' | translate}}</md-tooltip>
+                  <md-icon md-svg-icon="img/icons/baseline-edit-24px.svg"></md-icon>
+	            </md-button>
+	            <div ng-show="$ctrl.Authentication.enableEdit">
+	              <md-button ng-click="$ctrl.deleteParam(param.id)" aria-label="{{'DELETE_LABEL' | translate}}" class="md-icon-button">
+	                <md-tooltip>{{'DELETE_LABEL' | translate}}</md-tooltip>
+	                <md-icon md-svg-icon="img/icons/baseline-delete-24px.svg"></md-icon>
+	              </md-button>
+	            </div>
+	          </div>
+	        </td>
+	      </tr>
+	    </table>
+      </div>
+    </md-card-content>
+  </md-card>
+</md-content>

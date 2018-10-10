@@ -1,0 +1,56 @@
+<md-content>
+  <md-card>
+    <md-card-header translate="DOCUMENT_DETAILS_ITEMS_BUTTON_LABEL">
+    </md-card-header>
+
+	<div ng-show="$ctrl.Authentication.enableEdit">
+	  <md-card-actions layout="row" layout-align="start">
+	    <md-button href="#!/docitems/0/docid/{{$ctrl.docId}}" translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}" class="md-raised"></md-button>
+	  </md-card-actions>
+	</div>
+    
+    <md-card-content>
+	  <table ng-table="$ctrl.docItemList" show-filter="true" class="table table-condensed table-striped table-bordered">
+	    <tr ng-repeat="item in $data">
+	      <td title="'DOCITEM_TABLE_DESCRIPTION_LABEL' | translate" filter="{description: 'text'}" sortable="'description'" ng-attr-title="{{item.description}}">
+	        {{item.description}}
+	      </td>
+	      <td title="'DOCITEM_TABLE_QUANTITY_LABEL' | translate" filter="{quantity: 'number'}" sortable="'quantity'" class="text-right" ng-attr-title="{{item.quantity | number : 6}}">
+	        {{item.quantity | number : 6}}
+	      </td>
+	      <td title="'DOCITEM_TABLE_UNIT_TYPE_LABEL' | translate" filter="{unitType: 'text'}" sortable="'unitType'" ng-attr-title="{{item.unitType}}">
+	        {{item.unitType}}
+	      </td>
+	      <td title="'DOCITEM_TABLE_PRICE_PER_UNIT_LABEL' | translate" filter="{pricePerUnit: 'number'}" sortable="'pricePerUnit'" class="text-right" ng-attr-title="{{item.pricePerUnit | number : 2}}">
+	        {{item.pricePerUnit | number : 2}}
+	      </td>
+	      <td title="'DOCITEM_TABLE_DISCOUNT_LABEL' | translate" filter="{discount: 'number'}" sortable="'discount'" class="text-right" ng-attr-title="{{item.discount | number : 2}}">
+	        {{item.discount | number : 2}}
+	      </td>
+	      <td title="'DOCITEM_TABLE_PRICE_LABEL' | translate" filter="{price: 'number'}" sortable="'price'" class="text-right" ng-attr-title="{{item.price | number : 2}}">
+	        {{item.price | number : 2}}
+	      </td>
+	      <td title="'DOCITEM_TABLE_TAX_DESCR_LABEL' | translate" filter="{taxDescr: 'text'}" sortable="'taxDescr'" ng-attr-title="{{item.taxDescr}}">
+	        {{item.taxDescr}}
+	      </td>
+	      <td>
+	        <div layout="row">
+	          <md-button href="#!/docitems/{{item.id}}/docid/{{$ctrl.docId}}" aria-label="{{'EDIT_LABEL' | translate}}" class="md-icon-button">
+	            <md-icon md-svg-icon="img/icons/baseline-edit-24px.svg"></md-icon>
+	            <md-tooltip>{{'EDIT_LABEL' | translate}}</md-tooltip>
+	          </md-button>
+	          <div ng-show="$ctrl.Authentication.enableEdit">
+	            <md-button ng-click="$ctrl.deleteDocItem(item.id)" aria-label="{{'DELETE_LABEL' | translate}}" class="md-icon-button">
+	              <md-tooltip>{{'DELETE_LABEL' | translate}}</md-tooltip>
+	              <md-icon md-svg-icon="img/icons/baseline-delete-24px.svg"></md-icon>
+	            </md-button>
+	          </div>
+	        </div>
+	      </td>
+	    </tr>
+	  </table>
+	</md-card-content>
+  </md-card>
+</md-content>
+
+<doc-sum-list></doc-sum-list>

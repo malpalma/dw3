@@ -1,0 +1,31 @@
+<md-dialog aria-label="{{'LOGIN_DIALOG_TITLE' | translate}}">
+  <form name="loginForm" ng-submit="$ctrl.login()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 translate="LOGIN_DIALOG_LABEL"></h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="$ctrl.closeDialog()">
+          <md-icon md-svg-src="img/icons/baseline-close-24px.svg" aria-label="{{'LOGIN_DIALOG_CLOSE' | translate}}"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+  
+    <md-dialog-content ng-cloak>
+      <div class="md-dialog-content">
+        <md-input-container class="md-block">
+          <label translate="LOGIN_DIALOG_USERNAME_LABEL"></label>
+          <input ng-model="$ctrl.Authentication.credentials.username" md-autofocus required>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label translate="LOGIN_DIALOG_PASSWORD_LABEL"></label>
+          <input type="password" ng-model="$ctrl.Authentication.credentials.password" required>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+  
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button type="submit" translate="BUTTON_LOGIN" ng-disabled="loginForm.$invalid" aria-label="{{'BUTTON_LOGIN' | translate}}" class="md-raised md-primary"></md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

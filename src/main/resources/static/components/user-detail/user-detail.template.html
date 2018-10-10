@@ -1,0 +1,44 @@
+<md-content layout-padding>
+  <form name="userForm">
+    <md-card>
+      <md-card-header translate="USER_EDIT_MAIN_CARD_TITLE">
+      </md-card-header>
+      <md-card-content layout="row" layout-xs="column">
+        <div layout="column" flex>
+          
+          <md-card>
+            <md-card-content>
+              <md-input-container class="md-block" flex>
+                <label translate="USERS_TABLE_NAME_LABEL"></label>
+                <input ng-model="$ctrl.user.name" required md-maxlength="50" ng-disabled="!$ctrl.Authentication.enableEdit">
+              </md-input-container>
+              <md-input-container class="md-block" flex>
+                <label translate="USERS_TABLE_PASS_LABEL"></label>
+                <input type="password" ng-model="$ctrl.user.pass" required ng-disabled="!$ctrl.Authentication.enableEdit">
+              </md-input-container>
+              <div layout="column">
+                <md-checkbox ng-model="$ctrl.user.active" aria-label="{{'USERS_TABLE_ACTIVE_LABEL' | translate}}" ng-disabled="!$ctrl.Authentication.enableEdit">
+                  {{'USERS_TABLE_ACTIVE_LABEL' | translate}}
+                </md-checkbox>
+                <md-checkbox ng-model="$ctrl.user.canEdit" aria-label="{{'USERS_TABLE_CAN_EDIT_LABEL' | translate}}" ng-disabled="!$ctrl.Authentication.enableEdit">
+                  {{'USERS_TABLE_CAN_EDIT_LABEL' | translate}}
+                </md-checkbox>
+                <md-checkbox ng-model="$ctrl.user.canAccept" aria-label="{{'USERS_TABLE_CAN_ACCEPT_LABEL' | translate}}" ng-disabled="!$ctrl.Authentication.enableEdit">
+                  {{'USERS_TABLE_CAN_ACCEPT_LABEL' | translate}}
+                </md-checkbox>
+                <md-checkbox ng-model="$ctrl.user.isAdmin" aria-label="{{'USERS_TABLE_IS_ADMIN_LABEL' | translate}}" ng-disabled="!$ctrl.Authentication.enableEdit">
+                  {{'USERS_TABLE_IS_ADMIN_LABEL' | translate}}
+                </md-checkbox>
+              </div>
+            </md-card-content>
+          </md-card>
+          
+        </div>        
+        <md-card-actions layout="column">
+          <md-button ng-click="$ctrl.saveUser()" translate="SAVE_LABEL" aria-label="{{'SAVE_LABEL' | translate}}" class="md-raised"
+          	ng-show="$ctrl.Authentication.enableEdit" ng-disabled="!userForm.$dirty || userForm.$invalid"></md-button>
+        </md-card-actions>
+      </md-card-content>
+    </md-card>
+  </form>
+</md-content>

@@ -1,0 +1,130 @@
+<md-content layout-padding>
+  <form name="documentForm">
+    <md-card>
+      <md-card-header translate="DOCUMENT_EDIT_MAIN_CARD_TITLE">
+      </md-card-header>
+      <md-card-content layout="row">
+        <div layout="column" flex>
+        
+          <md-card>
+            <md-card-header translate="DOCUMENT_DETAILS_CARD_TITLE">
+            </md-card-header>
+            <md-card-content>
+              <div layout="column">
+                <div layout="row" layout-xs="column">
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_INV_NO_LABEL"></label>
+                    <input ng-model="$ctrl.document.invNo" required md-maxlength="50" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
+                  </md-input-container>
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_INV_DT_LABEL"></label>
+                    <md-datepicker ng-model="$ctrl.document.invDt" required ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'"></md-datepicker>
+                  </md-input-container>
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_SALE_DT_LABEL"></label>
+                    <md-datepicker ng-model="$ctrl.document.saleDt" required ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'"></md-datepicker>
+                  </md-input-container>
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_GROSS_LABEL"></label>
+                    <input ng-model="$ctrl.document.gross" type="number" step="0.01" disabled>
+                  </md-input-container>
+                </div>
+                <div layout="row" layout-xs="column">
+                  <form ng-submit="$event.preventDefault()">
+                    <span>
+                      <md-autocomplete
+                          md-selected-item="$ctrl.selectedItemPaymentMethodAutocomplete"
+                          md-selected-item-change="$ctrl.selectedItemChangePaymentMethodAutocomplete()"
+                          md-search-text="$ctrl.searchTextPaymentMethodAutocomplete"
+                          md-items="pm in $ctrl.querySearchPaymentMethod($ctrl.searchTextPaymentMethodAutocomplete)"
+                          md-item-text="pm.description"
+                          md-min-length="0"
+                          placeholder="{{'PICK_PAYMENT_METHOD_LABEL' | translate}}"
+                          ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
+                        <md-item-template>
+                          <span md-highlight-text="$ctrl.searchTextPaymentMethodAutocomplete" md-highligth-flags="^i">{{pm.description}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                          <span translate="PICK_PAYMENT_METHOD_NOT_FOUND"></span>
+<!--                           NOT WORKING -->
+<!--                           <a ng-click="$ctrl.newPaymentMethod($ctrl.searchTextPaymentMethodAutocomplete)">Utwórz</a> -->
+                        </md-not-found>
+                      </md-autocomplete>
+                    </span>
+                  </form>
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_PAYMENT_METHOD_LABEL"></label>
+                    <input ng-model="$ctrl.document.paymentMethod" md-maxlength="100" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
+                  </md-input-container>
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_DUE_DT_LABEL"></label>
+                    <md-datepicker ng-model="$ctrl.document.dueDt" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'"></md-datepicker>
+                  </md-input-container>
+                </div>
+              </div>
+            </md-card-content>
+          </md-card>
+  
+          <md-card>
+            <md-card-header translate="DOCUMENT_SELLERS_DATA_CARD_TITLE">
+            </md-card-header>
+            <md-card-content>
+              <div layout="column">
+                <div layout="row" layout-xs="column">
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_SELLERS_NAME_LABEL"></label>
+                    <input ng-model="$ctrl.document.sellersName" required md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
+                  </md-input-container>
+                  <md-input-container class="md-block">
+                    <label translate="DOCUMENTS_TABLE_SELLERS_REG_NUMBER_LABEL"></label>
+                    <input ng-model="$ctrl.document.sellersRegNumber" md-maxlength="30" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
+                  </md-input-container>
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_SELLERS_ADDRESS_LABEL"></label>
+                    <input ng-model="$ctrl.document.sellersAddress" required md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
+                  </md-input-container>
+                </div>
+                <div layout="row" layout-xs="column">
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_BANK_ACC_NO_LABEL"></label>
+                    <input ng-model="$ctrl.document.bankAccNo" md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
+                  </md-input-container>
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_SELLERS_CONTACT_DETAILS_LABEL"></label>
+                    <input ng-model="$ctrl.document.sellersContactDetails" md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
+                  </md-input-container>
+                </div>
+              </div>
+            </md-card-content>
+          </md-card>
+  
+          <md-card>
+            <md-card-header translate="DOCUMENT_WORKFLOW_CARD_TITLE">
+            </md-card-header>
+            <md-card-content>
+              <div layout="row" layout-xs="column">
+                <md-input-container class="md-block" flex>
+                  <label translate="DOCUMENTS_TABLE_STATUS_LABEL"></label>
+                  <input ng-model="$ctrl.document.status" disabled>
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                  <label translate="DOCUMENTS_TABLE_USERN_LABEL"></label>
+                  <input ng-model="$ctrl.document.usern" disabled>
+                </md-input-container>
+              </div>
+            </md-card-content>
+          </md-card>
+        
+        </div>
+        <md-card-actions layout="column">
+          <md-button ng-click="$ctrl.saveDocument()" translate="SAVE_LABEL" aria-label="{{'SAVE_LABEL' | translate}}" class="md-raised"
+          	ng-show="$ctrl.Authentication.enableEdit && $ctrl.document.status == 'nowy'" ng-disabled="!documentForm.$dirty"></md-button>
+          <md-button href="#!/docitems/{{$ctrl.document.id}}" translate="DOCUMENT_DETAILS_ITEMS_BUTTON_LABEL" aria-label="{{'DOCUMENT_DETAILS_ITEMS_BUTTON_LABEL' | translate}}" class="md-raised"></md-button>
+          <md-button href="#!/docsums/{{$ctrl.document.id}}" translate="DOCUMENT_DETAILS_SUMS_BUTTON_LABEL" aria-label="{{'DOCUMENT_DETAILS_SUMS_BUTTON_LABEL'}} | translate" class="md-raised"></md-button>
+          <md-button href="#!/attachments/{{document.id}}" translate="DOCUMENT_DETAILS_ATTACHMENTS_BUTTON_LABEL" aria-label="{{'DOCUMENT_DETAILS_ATTACHMENTS_BUTTON_LABEL'}} | translate" class="md-raised"></md-button>
+          <md-button href="#!/docstages/{{$ctrl.document.id}}" translate="DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL" aria-label="{{'DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL'}} | translate" class="md-raised"></md-button>
+        </md-card-actions>
+      </md-card-content>
+    </md-card>
+  </form>
+</md-content>

@@ -1,0 +1,32 @@
+<md-content>
+  <md-card>
+    <md-card-header translate="DOCUMENT_DETAILS_SUMS_BUTTON_LABEL">
+    </md-card-header>
+    <md-card-content>
+	<table ng-table="$ctrl.docSumList" show-filter="true" class="table table-condensed table-striped table-bordered">
+	  <tr ng-repeat="sum in $data">
+	    <td title="'DOCSUM_TABLE_TAX_DESCR_LABEL' | translate" filter="{taxDescr: 'text'}" sortable="'taxDescr'">
+	      {{sum.taxDescr}}
+	    </td>
+	    <td title="'DOCSUM_TABLE_PRICE_LABEL' | translate" filter="{price: 'number'}" sortable="'price'" class="text-right">
+	      {{sum.price | number : 2}}
+	    </td>
+	    <td title="'DOCSUM_TABLE_TAX_VALUE_LABEL' | translate" filter="{taxValue:'number'}" sortable="'taxValue'" class="text-right">
+	      {{sum.taxValue | number : 2}}
+	    </td>
+	    <td title="'DOCSUM_TABLE_GROSS_LABEL' | translate" filter="{gross: 'number'}" sortable="'gross'" class="text-right">
+	      {{sum.gross | number : 2}}
+	    </td>
+	  </tr>
+	  <tfoot>
+	    <tr>
+	      <td class="text-right"><strong>{{'DOCSUM_TOTAL_LABEL' | translate}}</strong></td>
+	      <td class="text-right">{{$ctrl.totalPrice | number : 2}}</td>
+	      <td class="text-right">{{$ctrl.totalTax | number : 2}}</td>
+	      <td class="text-right">{{$ctrl.totalGross | number : 2}}</td>
+	    </tr>
+	  </tfoot>
+	</table>
+	</md-card-content>
+  </md-card>
+</md-content>

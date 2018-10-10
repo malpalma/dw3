@@ -1,0 +1,67 @@
+<md-content>
+  <md-card>
+    <md-card-header translate="DOCUMENTS_MENU_LABEL">
+    </md-card-header>
+
+	<div ng-show="$ctrl.Authentication.enableEdit">
+	  <md-card-actions layout="row" layout-align="start">
+	    <md-button translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}" class="md-raised"></md-button>
+	  </md-card-actions>
+	</div>
+
+    <md-card-content>
+	  <table ng-table="$ctrl.documents" show-filter="true" class="table table-condensed table-striped table-bordered">
+	    <tr ng-repeat="document in $data">
+	      <td title="'DOCUMENTS_TABLE_INV_NO_LABEL' | translate" filter="{invNo: 'text'}" sortable="'invNo'" ng-attr-title="{{document.invNo}}">
+	        {{document.invNo}}
+          </td>
+<!-- 	    FILTERING BY DATE! -->
+	      <td title="'DOCUMENTS_TABLE_INV_DT_LABEL' | translate" sortable="'invDt'" ng-attr-title="{{document.invDt | date: 'y-MM-dd'}}">
+	        {{document.invDt | date: "y-MM-dd"}}
+	      </td>
+	      <td title="'DOCUMENTS_TABLE_SELLERS_NAME_LABEL' | translate" filter="{sellersName: 'text'}" sortable="'sellersName'" ng-attr-title="{{document.sellersName}}">
+	        {{document.sellersName}}
+	      </td>
+	      <td title="'DOCUMENTS_TABLE_SELLERS_REG_NUMBER_LABEL' | translate" filter="{sellersRegNumber: 'text'}" sortable="'sellersRegNumber'" ng-attr-title="{{document.sellersRegNumber}}">
+	        {{document.sellersRegNumber}}
+	      </td>
+	      <td title="'DOCUMENTS_TABLE_GROSS_LABEL' | translate" filter="{gross: 'number'}" sortable="'gross'" class="text-right" ng-attr-title="{{document.gross | number: 2}}">
+	        {{document.gross | number: 2}}
+	      </td>
+	      <td title="'DOCUMENTS_TABLE_STATUS_LABEL' | translate" filter="{status: 'text'}" sortable="'status'" ng-attr-title="{{document.status}}">
+	        {{document.status}}
+	      </td>
+	      <td title="'DOCUMENTS_TABLE_USERN_LABEL' | translate" filter="{usern: 'text'}" sortable="'usern'" ng-attr-title="{{document.usern}}">
+	        {{document.usern}}
+	      </td>
+	      <td>
+	        <div layout="row">
+	          <md-button href="#!/documents/{{document.id}}" aria-label="{{'EDIT_LABEL' | translate}}" class="md-icon-button">
+	            <md-tooltip>{{'EDIT_LABEL' | translate}}</md-tooltip>
+                <md-icon md-svg-icon="img/icons/baseline-edit-24px.svg"></md-icon>
+	          </md-button>
+	          <md-button href="#!/docitems/{{document.id}}" aria-label="{{'DOCUMENT_DETAILS_ITEMS_BUTTON_LABEL' | translate}}" class="md-icon-button">
+	            <md-tooltip>{{'DOCUMENT_DETAILS_ITEMS_BUTTON_LABEL' | translate}}</md-tooltip>
+	            <md-icon md-svg-icon="img/icons/baseline-view_list-24px.svg"></md-icon>
+	          </md-button>
+	          <md-button href="#!/attachments/{{document.id}}" aria-label="{{'DOCUMENT_DETAILS_ATTACHMENTS_BUTTON_LABEL' | translate}}" class="md-icon-button">
+	            <md-tooltip>{{'DOCUMENT_DETAILS_ATTACHMENTS_BUTTON_LABEL' | translate}}</md-tooltip>
+	            <md-icon md-svg-icon="img/icons/baseline-attach_file-24px.svg"></md-icon>
+	          </md-button>
+	          <md-button href="#!/docstages/{{document.id}}" aria-label="{{'DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL' | translate}}" class="md-icon-button">
+	            <md-tooltip>{{'DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL' | translate}}</md-tooltip>
+	            <md-icon md-svg-icon="img/icons/baseline-cached-24px.svg"></md-icon>
+	          </md-button>
+	          <div ng-show="$ctrl.Authentication.enableEdit && document.status == 'nowy'">
+	            <md-button ng-click="$ctrl.deleteDocument(document.id)" aria-label="{{'DELETE_LABEL' | translate}}" class="md-icon-button">
+	              <md-tooltip>{{'DELETE_LABEL' | translate}}</md-tooltip>
+	              <md-icon md-svg-icon="img/icons/baseline-delete-24px.svg"></md-icon>
+	            </md-button>
+	          </div>
+	        </div>
+	      </td>
+	    </tr>
+	  </table>
+	</md-card-content>
+  </md-card>
+</md-content>

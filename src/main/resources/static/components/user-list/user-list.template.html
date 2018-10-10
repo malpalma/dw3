@@ -1,0 +1,48 @@
+<md-content>
+  <md-card>
+    <md-card-header translate="USERS_MENU_LABEL">
+    </md-card-header>
+
+	<div ng-show="$ctrl.Authentication.enableEdit">
+	  <md-card-actions layout="row" layout-align="start">
+	    <md-button href="#!/users/0" translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}"class="md-raised"></md-button>
+	  </md-card-actions>
+	</div>
+
+    <md-card-content>
+	  <table ng-table="$ctrl.users" show-filter="true" class="table table-condensed table-striped table-bordered">
+	    <tr ng-repeat="user in $data">
+	      <td title="'USERS_TABLE_NAME_LABEL' | translate" filter="{ name: 'text' }" sortable="'name'" ng-attr-title="{{user.name}}">
+	        {{user.name}}
+	      </td>
+	      <td title="'USERS_TABLE_ACTIVE_LABEL' | translate" sortable="'active'" class="text-center" ng-attr-title="{{user.active | checkmark}}">
+	        {{user.active | checkmark}}
+	      </td>
+	      <td title="'USERS_TABLE_CAN_EDIT_LABEL' | translate" sortable="'canEdit'" class="text-center" ng-attr-title="{{user.canEdit | checkmark}}">
+	        {{user.canEdit | checkmark}}
+	      </td>
+	      <td title="'USERS_TABLE_CAN_ACCEPT_LABEL' | translate" sortable="'canAccept'" class="text-center" ng-attr-title="{{user.canAccept | checkmark}}">
+	        {{user.canAccept | checkmark}}
+	      </td>
+	      <td title="'USERS_TABLE_IS_ADMIN_LABEL' | translate" sortable="'isAdmin'" class="text-center" ng-attr-title="{{user.isAdmin | checkmark}}">
+	        {{user.isAdmin | checkmark}}
+	      </td>
+	      <td>
+	        <div layout="row">
+	          <md-button href="#!/users/{{user.id}}" aria-label="{{'EDIT_LABEL' | translate}}" class="md-icon-button">
+	            <md-tooltip>{{'EDIT_LABEL' | translate}}</md-tooltip>
+                <md-icon md-svg-icon="img/icons/baseline-edit-24px.svg"></md-icon>
+	          </md-button>
+	          <div ng-show="$ctrl.Authentication.enableEdit">
+	            <md-button ng-click="$ctrl.deleteUser(user.id)" aria-label="{{'DELETE_LABEL' | translate}}" class="md-icon-button">
+	              <md-tooltip>{{'DELETE_LABEL' | translate}}</md-tooltip>
+	              <md-icon md-svg-icon="img/icons/baseline-delete-24px.svg"></md-icon>
+	            </md-button>
+	          </div>
+	        </div>
+	      </td>
+	    </tr>
+	  </table>
+    </md-card-content>
+  </md-card>
+</md-content>

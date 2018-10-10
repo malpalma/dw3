@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+<!--   ngTable -->
+  <link rel="stylesheet"; href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+<!--   ngMaterial -->
+  <link rel="stylesheet"; href="bower_components/angular-material/angular-material.css">
+<!--   icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body ng-cloak>
+  <md-content>
+    <md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <md-menu-bar>
+          <md-menu>
+            <md-button ng-click="$mdMenu.open()" aria-label="{{'MAIN_MENU_LABEL' | translate}}" class="md-icon-button">
+              <md-icon md-svg-icon="img/icons/baseline-menu-24px.svg"></md-icon>
+            </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button href="#!/documents" ng-click="$mdMenu.close()" translate="DOCUMENTS_MENU_LABEL" aria-label="{{'DOCUMENTS_MENU_LABEL' | translate}}"></md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button href="#!/contractors" ng-click="$mdMenu.close()" translate="CONTRACTORS_MENU_LABEL" aria-label="{{'CONTRACTORS_MENU_LABEL' | translate}}"></md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button href="#!/users" ng-click="$mdMenu.close()" translate="USERS_MENU_LABEL" aria-label="{{'USERS_MENU_LABEL' | translate}}"></md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-menu>
+                  <md-button ng-click="$mdMenu.open()" translate="PARAMETERS_MENU_LABEL" aria-label="{{'PARAMETERS_MENU_LABEL' | translate}}"></md-button>
+                  <md-menu-content>
+                    <md-menu-item>
+                      <md-button href="#!/params/tr" ng-click="$mdMenu.close()" translate="TAX_RATES_MENU_LABEL" aria-label="{{'TAX_RATES_MENU_LABEL' | translate}}"></md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                      <md-button href="#!/params/pm" ng-click="$mdMenu.close()" translate="PAYMENT_METHODS_MENU_LABEL" aria-label="{{'PAYMENT_METHODS_MENU_LABEL' | translate}}"></md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                      <md-button href="#!/params/ut" ng-click="$mdMenu.close()" translate="UNIT_TYPES_MENU_LABEL" aria-label="{{'UNIT_TYPES_MENU_LABEL' | translate}}"></md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </md-menu-bar>
+        
+        <h2 flex md-truncate translate="TITLE"></h2>
+        
+        <authentication-toolbar></authentication-toolbar>
+        
+        <div ng-controller="TranslationController">
+		  <md-button ng-click="changeLanguage('pl')" class="md-icon-button">
+		    <md-icon md-svg-icon="img/polish.svg"></md-icon>
+		  </md-button>
+		  <md-button ng-click="changeLanguage('en')" class="md-icon-button">
+		    <md-icon md-svg-icon="img/uk.svg"></md-icon>
+		  </md-button>
+        </div>
+      </div>
+    </md-toolbar>
+  </md-content>
+  
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div ng-view></div>
+
+<!--   <div>Angular seed app: v<span app-version></span></div> -->
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-translate/angular-translate.js"></script>
+  <script src="app.js"></script>
+  <script src="core/core.module.js"></script>
+  <script src="core/checkmark/checkmark.filter.js"></script>
+  <script src="core/document/document.module.js"></script>
+  <script src="core/document/document.service.js"></script>
+  <script src="core/docitem/docitem.module.js"></script>
+  <script src="core/docitem/docitem.service.js"></script>
+  <script src="core/docsum/docsum.module.js"></script>
+  <script src="core/docsum/docsum.service.js"></script>
+  <script src="core/docstage/docstage.module.js"></script>
+  <script src="core/docstage/docstage.service.js"></script>
+  <script src="core/contractor/contractor.module.js"></script>
+  <script src="core/contractor/contractor.service.js"></script>
+  <script src="core/user/user.module.js"></script>
+  <script src="core/user/user.service.js"></script>
+  <script src="core/param/param.module.js"></script>
+  <script src="core/param/param.service.js"></script>
+  <script src="core/translation/translation.module.js"></script>
+  <script src="core/translation/translation.config.js"></script>
+  <script src="core/authentication/authentication.module.js"></script>
+  <script src="core/authentication/authentication.service.js"></script>
+  <script src="core/toast/toast.module.js"></script>
+  <script src="core/toast/toast.service.js"></script>
+  <script src="components/document-list/document-list.module.js"></script>
+  <script src="components/document-list/document-list.component.js"></script>
+  <script src="components/document-detail/document-detail.module.js"></script>
+  <script src="components/document-detail/document-detail.component.js"></script>
+  <script src="components/docitem-list/docitem-list.module.js"></script>
+  <script src="components/docitem-list/docitem-list.component.js"></script>
+  <script src="components/docitem-detail/docitem-detail.module.js"></script>
+  <script src="components/docitem-detail/docitem-detail.component.js"></script>
+  <script src="components/docsum-list/docsum-list.module.js"></script>
+  <script src="components/docsum-list/docsum-list.component.js"></script>
+  <script src="components/docstage-list/docstage-list.module.js"></script>
+  <script src="components/docstage-list/docstage-list.component.js"></script>
+  <script src="components/contractor-list/contractor-list.module.js"></script>
+  <script src="components/contractor-list/contractor-list.component.js"></script>
+  <script src="components/contractor-detail/contractor-detail.module.js"></script>
+  <script src="components/contractor-detail/contractor-detail.component.js"></script>
+  <script src="components/user-list/user-list.module.js"></script>
+  <script src="components/user-list/user-list.component.js"></script>
+  <script src="components/user-detail/user-detail.module.js"></script>
+  <script src="components/user-detail/user-detail.component.js"></script>
+  <script src="components/authentication-toolbar/authentication-toolbar.module.js"></script>
+  <script src="components/authentication-toolbar/authentication-toolbar.component.js"></script>
+  <script src="components/param-list/param-list.module.js"></script>
+  <script src="components/param-list/param-list.component.js"></script>
+  <script src="components/param-detail/param-detail.module.js"></script>
+  <script src="components/param-detail/param-detail.component.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+<!--   ngTable -->
+  <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+<!--   ngAnimate -->
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+<!--   ngAria -->
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+<!--   ngMessages -->
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+<!--   ngMaterial -->
+  <script src="bower_components/angular-material/angular-material.js"></script>
+<!--   ngCookies -->
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+</body>
+</html>
