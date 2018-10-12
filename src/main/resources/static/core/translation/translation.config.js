@@ -35,10 +35,12 @@ angular.module('core.translation').
 		  DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL: 'Szczegóły obiegu',
 		  
 		  PICK_PAYMENT_METHOD_LABEL: 'Wybierz metodę płatności',
-		  PICK_PAYMENT_METHOD_DAYS_LABEL: 'dni',
-		  PICK_PAYMENT_METHOD_NOT_FOUND: 'Nie znaleziono',
-		  PICK_PAYMENT_METHOD_NEW_ALERT: 'Dołącz nową metodę płatności w parametrach lub uzupełnij ręcznie pola: ',
 		  PICK_CONTRACTOR_LABEL: 'Wybierz sprzedawcę',
+		  PICK_UNIT_TYPE_LABEL: 'Wybierz jednostkę miary',
+		  PICK_TAX_RATE_LABEL: 'Wybierz stawkę podatku',
+		  PICK_PAYMENT_METHOD_DAYS_LABEL: 'dni',
+		  PICK_PAYMENT_METHOD_NEW_ALERT: 'Dołącz nową metodę płatności w parametrach lub uzupełnij ręcznie pola: ',
+		  PICK_NOT_FOUND: 'Nie znaleziono',
 		  
 		  DOCUMENTS_TABLE_INV_DT_LABEL:	'Data wystawienia',
 		  DOCUMENTS_TABLE_INV_NO_LABEL: 'Nr dokumentu',
@@ -157,10 +159,12 @@ angular.module('core.translation').
 		  DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL: 'Workflow details',
 
 		  PICK_PAYMENT_METHOD_LABEL: 'Pick payment method',
-		  PICK_PAYMENT_METHOD_DAYS_LABEL: 'days',
-		  PICK_PAYMENT_METHOD_NOT_FOUND: 'Not found',
-		  PICK_PAYMENT_METHOD_NEW_ALERT: 'Create new payment method in parameters or fill in the fields manually: ',
 		  PICK_CONTRACTOR_LABEL: 'Pick seller',
+		  PICK_UNIT_TYPE_LABEL: 'Pick unit type',
+		  PICK_TAX_RATE_LABEL: 'Pick tax rate',
+		  PICK_PAYMENT_METHOD_DAYS_LABEL: 'days',
+		  PICK_PAYMENT_METHOD_NEW_ALERT: 'Create new payment method in parameters or fill in the fields manually: ',
+		  PICK_NOT_FOUND: 'Not found',
 
 		  DOCUMENTS_TABLE_INV_DT_LABEL:	'Document date',
 		  DOCUMENTS_TABLE_INV_NO_LABEL: 'Document number',

@@ -7,23 +7,23 @@ angular.
 	  var Param = {};
 	  
 	  Param.getParams = function() {
-		  return $resource('http://localhost:8080/getParams/:type');
+		  return $resource('/getParams/:type');
 	  };
 	  
 	  Param.getParam = function() {
-		  return $resource('http://localhost:8080/getParam/:id');
+		  return $resource('/getParam/:id');
 	  };
 	  
 	  Param.saveParam = function() {
-		  return $resource('http://localhost:8080/saveParam');
+		  return $resource('/saveParam');
 	  };
 	  
 	  Param.deleteParam = function() {
-		  return $resource('http://localhost:8080/deleteParam/:id');
+		  return $resource('/deleteParam/:id');
 	  };
 	  
 	  Param.getParamByDescr = function() {
-		  return $resource('http://localhost:8080/getParamByDescr/:type');
+		  return $resource('/getParamByDescr/:type');
 	  };
 	  
       return Param;

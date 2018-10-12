@@ -42,10 +42,10 @@
                           placeholder="{{'PICK_PAYMENT_METHOD_LABEL' | translate}}"
                           ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
                         <md-item-template>
-                          <span md-highlight-text="$ctrl.searchTextPaymentMethodAutocomplete" md-highligth-flags="^i">{{pm.description}}</span>
+                          <span md-highlight-text="$ctrl.searchTextPaymentMethodAutocomplete" md-highlight-flags="^i">{{pm.description}}</span>
                         </md-item-template>
                         <md-not-found>
-                          <span translate="PICK_PAYMENT_METHOD_NOT_FOUND"></span>
+                          <span translate="PICK_NOT_FOUND"></span>
 <!--                           NOT WORKING -->
 <!--                           <a ng-click="$ctrl.newPaymentMethod($ctrl.searchTextPaymentMethodAutocomplete)">Utwórz</a> -->
                         </md-not-found>

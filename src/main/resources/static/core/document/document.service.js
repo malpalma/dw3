@@ -13,8 +13,15 @@ angular.module('core.document')
 		  return $resource('/getDocument/:id');
 	  };
 	  
-	  Document.getDocStatus = function() {
-		  return $resource('/getDocStatus/:id');
+	  	  Document.getDocStatus = function() {
+		  return $resource('/getDocStatus/:id', {}, {
+			  charTable: {
+				  method: 'GET',
+				  transformResponse: function(data) {
+					  return {collection: angular.fromJson(data)};
+				  }
+			  }
+		  });
 	  };
 	  
 	  Document.getDocUser = function() {

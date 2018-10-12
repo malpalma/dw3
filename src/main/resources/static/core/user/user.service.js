@@ -7,27 +7,27 @@ angular.
 	  var User = {};
 	  
 	  User.getUsers = function () {
-		  return $resource('http://localhost:8080/getUsers');
+		  return $resource('/getUsers');
 	  };
 	  
 	  User.getUsersByPerm = function() {
-		  return $resource('http://localhost:8080/getUsers/:perm');
+		  return $resource('/getUsers/:perm');
 	  };
 	  
 	  User.getUser = function() {
-		  return $resource('http://localhost:8080/getUser/:id');
+		  return $resource('/getUser/:id');
 	  };
 	  
 	  User.saveUser = function() {
-		  return $resource('http://localhost:8080/saveUser');
+		  return $resource('/saveUser');
 	  };
 	  
 	  User.setNewPassword = function() {
-		  return $resource('http://localhost:8080/setNewPassword/:id');
+		  return $resource('/setNewPassword/:id');
 	  };
 	  
 	  User.deleteUser = function() {
-		  return $resource('http://localhost:8080/deleteUser/:id');
+		  return $resource('/deleteUser/:id');
 	  };
 	  
 	  return User;

@@ -16,10 +16,32 @@
                 <label translate="DOCITEM_TABLE_QUANTITY_LABEL"></label>
                 <input ng-model="$ctrl.docItem.quantity" type="number" step="any" required ng-disabled="!$ctrl.Authentication.enableEdit">
               </md-input-container>
-              <md-input-container class="md-block" flex>
-                <label translate="DOCITEM_TABLE_UNIT_TYPE_LABEL"></label>
-                <input ng-model="$ctrl.docItem.unitType" md-maxlength="100" required ng-disabled="!$ctrl.Authentication.enableEdit">
-              </md-input-container>
+              <div layout="row" layout-xs="column">
+                <form ng-submit="$enent.preventDefault()">
+                  <span>
+                    <md-autocomplete
+                    	md-selected-item="$ctrl.selectedItemUnitTypeAutocomplete"
+                    	md-selected-item-change="$ctrl.selectedItemChangeUnitTypeAutocomplete()"
+                    	md-search-text="$ctrl.searchTextUnitTypeAutocomplete"
+                    	md-items="ut in $ctrl.querySearchUnitType($ctrl.searchTextUnitTypeAutocomplete)"
+                    	md-item-text="ut.description"
+                    	md-min-length="0"
+                    	placeholder="{{'PICK_UNIT_TYPE_LABEL' | translate}}"
+                    	ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.docStatus != 'nowy'">
+                      <md-item-template>
+                        <span md-highlight-text="$ctrl.searchTextUnitTypeAutocomplete" md-highlight-flags="^i">{{ut.description}}</span>
+                      </md-item-template>
+                      <md-not-found>
+                        <span translate="PICK_NOT_FOUND"></span>
+                      </md-not-found>
+                    </md-autocomplete>
+                  </span>
+                </form>
+                <md-input-container class="md-block" flex>
+                  <label translate="DOCITEM_TABLE_UNIT_TYPE_LABEL"></label>
+                  <input ng-model="$ctrl.docItem.unitType" md-maxlength="100" required ng-disabled="!$ctrl.Authentication.enableEdit">
+                </md-input-container>
+              </div>
               <md-input-container class="md-block" flex>
                 <label translate="DOCITEM_TABLE_PRICE_PER_UNIT_LABEL"></label>
                 <input ng-model="$ctrl.docItem.pricePerUnit" type="number" step="0.01" ng-disabled="!$ctrl.Authentication.enableEdit">

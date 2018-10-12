@@ -7,9 +7,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -78,19 +80,19 @@ public class Document {
 	@Column(length = 50)
 	private String usern;
 	
-	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<Attachment> attachments = new ArrayList<Attachment>();
 	
-	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<DocItem> items = new ArrayList<DocItem>();
 
-	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<DocSum> sums = new ArrayList<DocSum>();
 	
-	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<DocStage> stages = new ArrayList<DocStage>();
 

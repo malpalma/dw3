@@ -3,7 +3,7 @@
     <md-card-header translate="DOCUMENT_DETAILS_ITEMS_BUTTON_LABEL">
     </md-card-header>
 
-	<div ng-show="$ctrl.Authentication.enableEdit">
+	<div ng-show="$ctrl.Authentication.enableEdit && $ctrl.docStatus == 'nowy'">
 	  <md-card-actions layout="row" layout-align="start">
 	    <md-button href="#!/docitems/0/docid/{{$ctrl.docId}}" translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}" class="md-raised"></md-button>
 	  </md-card-actions>
@@ -39,7 +39,7 @@
 	            <md-icon md-svg-icon="img/icons/baseline-edit-24px.svg"></md-icon>
 	            <md-tooltip>{{'EDIT_LABEL' | translate}}</md-tooltip>
 	          </md-button>
-	          <div ng-show="$ctrl.Authentication.enableEdit">
+	          <div ng-show="$ctrl.Authentication.enableEdit && $ctrl.docStatus == 'nowy'">
 	            <md-button ng-click="$ctrl.deleteDocItem(item.id)" aria-label="{{'DELETE_LABEL' | translate}}" class="md-icon-button">
 	              <md-tooltip>{{'DELETE_LABEL' | translate}}</md-tooltip>
 	              <md-icon md-svg-icon="img/icons/baseline-delete-24px.svg"></md-icon>

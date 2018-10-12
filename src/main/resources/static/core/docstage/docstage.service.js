@@ -7,15 +7,15 @@ angular.
 	  var DocStage = {};
 	  
 	  DocStage.getStages = function() {
-		  return $resource('http://localhost:8080/getStages/:docId');
+		  return $resource('/getStages/:docId');
 	  };
 	  
 	  DocStage.initDocWF = function() {
-		  return $resource('http://localhost:8080/initDocWF/:docId');
+		  return $resource('/initDocWF/:docId');
 	  };
 	  
 	  DocStage.saveStage = function() {
-		  return $resource('http://localhost:8080/saveStage/:docId');
+		  return $resource('/saveStage/:docId');
 	  };
 	  
       return DocStage;

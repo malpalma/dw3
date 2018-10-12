@@ -7,7 +7,7 @@ angular.
       var DocSum = {};
       
       DocSum.getSums = function() {
-    	  return $resource('http://localhost:8080/getSums/:docId');
+    	  return $resource('/getSums/:docId');
       };
       
 	  return DocSum;
