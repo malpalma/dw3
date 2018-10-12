@@ -92,7 +92,7 @@ public class Document {
 	@JsonIgnore
 	private List<DocSum> sums = new ArrayList<DocSum>();
 	
-	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<DocStage> stages = new ArrayList<DocStage>();
 

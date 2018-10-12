@@ -54,3 +54,17 @@ md-autocomplete#custom-template {
 .custom-container {
   min-width: 300px !important;
 }
+
+/* ================================================================== md-toast ================================================================== */
+
+md-toast {
+	min-width: 100%;
+	margin: 0;
+	top: 0;
+	right: 0;
+	left: 0;
+}
+
+md-toast.error .md-toast-content {
+	background: #FF0000;
+}

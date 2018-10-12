@@ -16,6 +16,11 @@ angular.module('core.translation').
 		  LOGIN_DIALOG_USERNAME_LABEL: 'Nazwa użytkownika',
 		  LOGIN_DIALOG_PASSWORD_LABEL: 'Hasło',
 		  
+		  LOGIN_SUCCESS: 'Zalogowano',
+		  LOGIN_ERROR: 'Logowanie nie powiodło się',
+		  LOGOUT_SUCCESS: 'Wylogowano',
+		  LOGOUT_ERROR: 'Wylogowanie nie powiodło się',
+		  
 		  MAIN_MENU_LABEL: 'Menu',
 		  DOCUMENTS_MENU_LABEL: 'Dokumenty',
 		  CONTRACTORS_MENU_LABEL: 'Kontrahenci',
@@ -140,6 +145,11 @@ angular.module('core.translation').
 		  LOGIN_DIALOG_USERNAME_LABEL: 'Username',
 		  LOGIN_DIALOG_PASSWORD_LABEL: 'Password',
 		  
+		  LOGIN_SUCCESS: 'Logged in',
+		  LOGIN_ERROR: 'Login failed',
+		  LOGOUT_SUCCESS: 'Logged out',
+		  LOGOUT_ERROR: 'Logout failed',
+
 		  MAIN_MENU_LABEL: 'Menu',
 		  DOCUMENTS_MENU_LABEL: 'Documents',
 		  CONTRACTORS_MENU_LABEL: 'Contractors',

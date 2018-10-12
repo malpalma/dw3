@@ -25,6 +25,10 @@ angular.module('docItemDetail')
 		  if($routeParams.id == 0) {
 			  self.docItem = {};
 			  self.docItem.docId = self.docId;
+			  self.docItem.quantity = 0;
+			  self.docItem.pricePerUnit = 0;
+			  self.docItem.price = 0;
+			  self.docItem.discount = 0;
 		  } else {
 			  self.docItem = DocItem.getItem().get({id: $routeParams.id});
 		  }
@@ -66,17 +70,69 @@ angular.module('docItemDetail')
 			  }
 		  }
 		  
+		  self.taxRateList;
+		  self.searchTextTaxRateAutocomplete;
+		  self.selectedItemTaxRateAutocomplete;
+		  
+		  self.getTaxRates = function() {
+			  Param.getParams().query({type: 'tr'})
+			  	.$promise
+			  		.then(function(response) {
+			  			self.taxRateList = response;
+			  		})
+			  		.catch(function(reason) {
+			  			console.log('CATCH in docItemDetail component, Param.getParams().query({type: "tr"}):');
+			  			console.log(reason);
+			  			Toast.showErrorToast($translate.instant('ERROR'));
+			  		})
+		  }
+		  
+		  self.getTaxRates();
+		  
+		  self.selectedItemChangeTaxRateAutocomplete = function() {
+			  if(self.selectedItemTaxRateAutocomplete != null) {
+				  self.docItem.taxDescr = self.selectedItemTaxRateAutocomplete.description;
+				  self.docItem.taxRate = self.selectedItemTaxRateAutocomplete.value;
+			  }
+		  }
+		  
+		  self.querySearchTaxRate = function(query) {
+			  var results = query ? self.unitTypeList.filter(self.createFilterForTaxRate(query)) : self.taxRateList;
+			  return results;
+		  }
+		  
+		  self.createFilterForTaxRate = function(query) {
+			  var lowercaseQuery = query.toLowerCase();
+			  return function filterFn(taxRate) {
+				  return (taxRate.description.indexOf(lowercaseQuery) === 0);
+			  }
+		  }
+		  
+		  self.compute = function() {
+			  if(self.docItem.quantity > 0 && self.docItem.pricePerUnit != 0) {
+				  self.docItem.quantity = Math.round(self.docItem.quantity * 1e6) / 1e6;
+				  self.docItem.pricePerUnit = Math.round(self.docItem.pricePerUnit * 1e2) / 1e2;
+				  self.docItem.price = self.docItem.quantity * self.docItem.pricePerUnit;
+				  self.docItem.price = Math.round(self.docItem.price * 1e2) / 1e2;
+				  if(self.docItem.discount != 0) {
+					  self.docItem.discount = Math.round(self.docItem.discount * 1e2) / 1e2;
+					  self.docItem.price -= self.docItem.discount;
+				  }
+			  }
+		  }
+		  
 		  self.saveDocItem = function() {
-			  var result = DocItem.saveItem().save({docId: self.docId}, self.docItem);
-			  result.$promise
-			  	.then(function() {
-			  		window.location.replace('#!/docitems/' + self.docId);
-			  		Toast.showToast($translate.instant('SAVE_TOAST_TEXT_CONTENT'));
-			  	})
-			  	.catch(function(reason) {
-			  		console.log(reason);
-			  		Toast.showErrorToast($translate.instant('ERROR'));
-			  	})
+			  DocItem.saveItem().save({docId: self.docId}, self.docItem)
+			  	.$promise
+			  		.then(function(response) {
+			  			window.location.replace('#!/docitems/' + self.docId);
+			  			Toast.showToast($translate.instant('SAVE_TOAST_TEXT_CONTENT'));
+			  		})
+			  		.catch(function(reason) {
+			  			console.log('CATCH in docItemDetail component, DocItem.saveItem().save({docId: self.docId}, self.docItem):')
+			  			console.log(reason);
+			  			Toast.showErrorToast($translate.instant('ERROR'));
+			  		})
 		  }
 	  }]
   });

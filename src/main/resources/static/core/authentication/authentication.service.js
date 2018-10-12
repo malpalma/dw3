@@ -2,7 +2,7 @@
 
 angular
   .module('core.authentication')
-    .factory('Authentication', ['$resource', '$http', function($resource, $http) {
+    .factory('Authentication', ['$resource', '$http', 'Toast', '$translate', function($resource, $http, Toast, $translate) {
     	var Authentication = {};
     	
     	Authentication.error = false;
@@ -11,6 +11,9 @@ angular
     	Authentication.authenticated = false;
     	
     	Authentication.enableEdit = false;
+    	
+    	Authentication.credentials.username = 'super';
+    	Authentication.credentials.password = 'superPwd';
     	
     	Authentication.authenticate = function() {
     		if(Authentication.credentials.username != null) {
@@ -34,32 +37,42 @@ angular
     	};
     	
     	Authentication.login = function() {
-    		var result = Authentication.authenticate().get();
-    		result.$promise
-    		.then(function() {
-    			Authentication.setSession(result);
-    			Authentication.authenticated = true;
-    			Authentication.enableEdit = (Authentication.session.canEdit == 'true');
-    			console.log('zalogowany');
-    		})
-    		.catch(function() {
-    			Authentication.credentials = {};
-    			console.log('nie zalogowany');
-    		});
-    	};
+    		Authentication.authenticate().get()
+    			.$promise
+    				.then(function(response) {
+    					Authentication.setSession(response);
+    					Authentication.authenticated = true;
+    					Authentication.enableEdit = (Authentication.session.canEdit == 'true');
+    					Toast.showToast($translate.instant('LOGIN_SUCCESS'));
+    				})
+    				.catch(function(reason) {
+    					Authentication.credentials = {};
+    					console.log('CATCH in Authentication service, Authentication.authenticate().get():');
+    					console.log(reason);
+    					Toast.showErrorToast($translate.instant('LOGIN_ERROR'));
+    				});
+    		};
     	
     	Authentication.logout = function() {
     		var Logout = $resource('/logout');
-    		var result = Logout.save();
-    		result.$promise.then(function() {
-    			Authentication.authenticated = false;
-    			Authentication.credentials = {};
-    			Authentication.enableEdit = false;
-    			var session = Authentication.userSession().get(); 
-    			session.$promise.then(function() {
-    				Authentication.setSession(session);
-    			})
-    		})
+    		Logout.save()
+    			.$promise
+    				.then(function(response) {
+    					Authentication.authenticated = false;
+    					Authentication.credentials = {};
+    					Authentication.enableEdit = false;
+    					Authentication.userSession().get()
+    						.$promise
+    							.then(function(response) {
+    								Authentication.setSession(response);
+    								Toast.showToast($translate.instant('LOGOUT_SUCCESS'));
+    							})
+    				})
+    				.catch(function(reason) {
+    					console.log('CATCH in Authentication service, Logout.save():');
+    					console.log(reason);
+    					Toast.showErrorToast($translate.instant('LOGOUT_ERROR'));
+    				})
     	};
 
     	return Authentication;

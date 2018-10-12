@@ -3,13 +3,14 @@
 angular.module('docItemList')
   .component('docItemList', {
 	  templateUrl: 'components/docitem-list/docitem-list.template.html',
-	  controller: ['$routeParams', 'DocItem', 'NgTableParams', 'Authentication', 'Toast', '$translate', '$mdDialog', 'Document',
+	  controller: ['$routeParams', 'DocItem', 'NgTableParams', 'Authentication', 'Toast', '$translate', '$mdDialog', 'Document', 
 		  function DocItemListController($routeParams, DocItem, NgTableParams, Authentication, Toast, $translate, $mdDialog, Document) {
 		  var self = this;
 		  
 		  self.Authentication = Authentication;
 		  self.Toast = Toast;
 		  self.docId = $routeParams.docId;
+		  self.refresh = 1;
 		  
 		  Document.getDocStatus().charTable({id: self.docId})
 		  	.$promise.then(function(response) {
@@ -35,10 +36,12 @@ angular.module('docItemList')
 								.ok($translate.instant('CONFIRM_OK_LABEL'))
 								.cancel($translate.instant('CONFIRM_CANCEL_LABEL'));
 			  $mdDialog.show(confirm).then(function() {
-				  var result = DocItem.deleteDocItem().delete({id: id});
+				  var result = DocItem.deleteItem().delete({id: id});
 				  result.$promise
 				  	.then(function() {
-				  		self.getDocItems();
+//				  		how refresh doc-sum-list without reloading?
+//				  		self.getDocItems();
+				  		window.location.reload();
 				  		Toast.showToast($translate.instant('DELETE_TOAST_TEXT_CONTENT'));
 				  	})
 				  	.catch(function(reason) {

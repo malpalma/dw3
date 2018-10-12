@@ -3,25 +3,25 @@
     <md-card-header translate="DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL">
     </md-card-header>
     <md-card-content>
-	<table ng-table="$ctrl.docStageList" show-filter="true" class="table table-condensed table-striped table-bordered">
-	  <tr ng-repeat="stage in $data">
-	    <td title="'DOCSTAGE_TABLE_DATE_LABEL' | translate" sortable="'date'">
-	      {{stage.date | date: "y-MM-dd"}}
-	    </td>
-	    <td title="'DOCSTAGE_TABLE_USERN_LABEL' | translate" filter="{usern: 'text'}" sortable="'usern'">
-	      {{stage.usern}}
-	    </td>
-	    <td title="'DOCSTAGE_TABLE_STATUS_LABEL' | translate" filter="{status: 'text'}" sortable="'status'">
-	      {{stage.status}}
-	    </td>
-	    <td title="'DOCSTAGE_TABLE_ACTION_LABEL' | translate" filter="{action: 'text'}" sortable="'action'">
-	      {{stage.action}}
-	    </td>
-	    <td title="'DOCSTAGE_TABLE_COMMENTS_LABEL' | translate" filter="{comments: 'text'}" sortable="'comments'">
-	      {{stage.comments}}
-	    </td>
-	  </tr>
-	</table>
+	  <table ng-table="$ctrl.docStageList" show-filter="true" class="table table-condensed table-striped table-bordered">
+	    <tr ng-repeat="stage in $data">
+	      <td title="'DOCSTAGE_TABLE_DATE_LABEL' | translate" sortable="'date'" ng-attr-title="{{stage.date | date: 'y-MM-dd'}}">
+	        {{stage.date | date: "y-MM-dd"}}
+	      </td>
+	      <td title="'DOCSTAGE_TABLE_USERN_LABEL' | translate" filter="{usern: 'text'}" sortable="'usern'" ng-attr-title="{{stage.usern}}">
+	        {{stage.usern}}
+	      </td>
+	      <td title="'DOCSTAGE_TABLE_STATUS_LABEL' | translate" filter="{status: 'text'}" sortable="'status'" ng-attr-title="{{stage.status}}">
+	        {{stage.status}}
+	      </td>
+	      <td title="'DOCSTAGE_TABLE_ACTION_LABEL' | translate" filter="{action: 'text'}" sortable="'action'" ng-attr-title="{{stage.action}}">
+	        {{stage.action}}
+	      </td>
+	      <td title="'DOCSTAGE_TABLE_COMMENTS_LABEL' | translate" filter="{comments: 'text'}" sortable="'comments'" ng-attr-title="{{stage.comments}}">
+	        {{stage.comments}}
+	      </td>
+	    </tr>
+	  </table>
 	</md-card-content>
   </md-card>
 </md-content>

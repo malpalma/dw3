@@ -10,7 +10,7 @@ angular
 			};
 			
 			Toast.showErrorToast = function(text) {
-				$mdToast.show($mdToast.simple().textContent(text).position('top right').toastClass('md-warn'));
+				$mdToast.show($mdToast.simple().textContent(text).position('top right').toastClass('error'));
 			};
 			
 			return Toast;
