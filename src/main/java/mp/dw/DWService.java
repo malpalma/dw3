@@ -282,8 +282,8 @@ public class DWService {
 		return (List<UserE>) userDao.getAll();
 	}
 	
-	public List<UserE> getUsersWithPerm(String perm, String without) {
-		return (List<UserE>) userDao.getUsersWithPerm(perm, without);
+	public List<UserE> getUsersWithPerm(String perm) {
+		return (List<UserE>) userDao.getUsersWithPerm(perm);
 	}
 
 	public UserE getUserById(Long id) {

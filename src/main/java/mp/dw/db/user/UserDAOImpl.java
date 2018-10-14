@@ -14,10 +14,9 @@ public class UserDAOImpl extends BaseDAOImpl<UserE, Long> implements UserDAO {
 		return em.createQuery("select u from UserE u").getResultList();
 	}
 	
-	public Iterable<UserE> getUsersWithPerm(String perm, String without) {
+	public Iterable<UserE> getUsersWithPerm(String perm) {
 		if(perm.equals("canAccept")) {
-			Query query = em.createQuery("select u from UserE u where canAccept = true and name != :without");
-			query.setParameter("without", without);
+			Query query = em.createQuery("select u from UserE u where canAccept = true");
 			return  query.getResultList();
 		} else if(perm.equals("canEdit")) {
 			Query query = em.createQuery("select u from UserE u where canEdit = true");

@@ -11,6 +11,7 @@ angular
     	Authentication.authenticated = false;
     	
     	Authentication.enableEdit = false;
+    	Authentication.enableAccept = false;
     	
     	Authentication.credentials.username = 'super';
     	Authentication.credentials.password = 'superPwd';
@@ -43,6 +44,7 @@ angular
     					Authentication.setSession(response);
     					Authentication.authenticated = true;
     					Authentication.enableEdit = (Authentication.session.canEdit == 'true');
+    					Authentication.enableAccept = (Authentication.session.canAccept == 'true');
     					Toast.showToast($translate.instant('LOGIN_SUCCESS'));
     				})
     				.catch(function(reason) {
@@ -61,6 +63,7 @@ angular
     					Authentication.authenticated = false;
     					Authentication.credentials = {};
     					Authentication.enableEdit = false;
+    					Authentication.enableAccept = false;
     					Authentication.userSession().get()
     						.$promise
     							.then(function(response) {

@@ -1,0 +1,51 @@
+<md-content layout-padding>
+  <form name="docStageForm">
+    <md-card>
+      <md-card-header translate="DOCSTAGE_EDIT_MAIN_CARD_TITLE">
+      </md-card-header>
+      <md-card-content>
+        <div layout="row" layout-xs="column">
+          <div layout="column" flex>
+            <md-card>
+              <md-card-content>
+                <div ng-show="$ctrl.action == 'send' || $ctrl.action == 'reject'">
+                <form ng-submit="$event.preventDefault()">
+                  <span>
+                    <md-autocomplete
+                  		  md-selected-item="$ctrl.selectedItemUserAutocomplete"
+                   		  md-selected-item-change="$ctrl.selectedItemChangeUserAutocomplete()"
+                   		  md-search-text="$ctrl.searchTextUserAutocomplete"
+                   		  md-items="user in $ctrl.querySearchUser($ctrl.searchTextUserAutocomplete)"
+                   		  md-item-text="user.name"
+                   		  md-min-length="0"
+                   		  placeholder="{{'PICK_USER_LABEL' | translate}}"
+                   		  ng-disabled="!$ctrl.Authentication.enableAccept"
+                   		  ng-required="$ctrl.action == 'send' || $ctrl.action == 'reject'">
+                      <md-item-template>
+                        <span md-highlight-text="$ctrl.searchTextUserAutocomplete" md-highlight-flags="^i">{{user.name}}</span>
+                      </md-item-template>
+                      <md-not-found>
+                        <span translate="PICK_NOT_FOUND"></span>
+                      </md-not-found>
+                    </md-autocomplete>
+                  </span>
+                </form>
+                <br>
+                </div>
+                <md-input-container class="md-block" flex>
+                  <label translate="DOCSTAGE_TABLE_COMMENTS_LABEL"></label>
+                  <input ng-model="$ctrl.docStage.comments" md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableAccept">
+                </md-input-container>
+              </md-card-content>
+            </md-card>
+          </div>
+        </md-card-content>
+        <md-card-actions layout="column">
+          <md-button ng-click="$ctrl.saveStage()" translate="SAVE_LABEL" aria-label="{{'SAVE_LABEL' | translate}}" class="md-raised"
+          		ng-show="$ctrl.Authentication.enableAccept" ng-disabled="docStageForm.$invalid">
+          </md-button>
+        </md-card-actions>
+      </div>
+    </md-card>
+  </form>
+</md-content>

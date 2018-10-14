@@ -508,10 +508,10 @@ public class DWRestController {
 	
 //	@PreAuthorize("hasAuthority('USER')")
 	@GetMapping(value = "/getUsers/{perm}")
-	public List<UserE> getUsersWithPerm(@PathVariable String perm, @RequestParam(name = "without") String without, HttpServletRequest req, HttpServletResponse resp) {
+	public List<UserE> getUsersWithPerm(@PathVariable String perm, String without, HttpServletRequest req, HttpServletResponse resp) {
 		try {
 			resp.setCharacterEncoding("UTF-8");
-			return dwService.getUsersWithPerm(perm, without);
+			return dwService.getUsersWithPerm(perm);
 		} catch(Exception e) {
 			logger.error("exception in: GET Mapping, /getUsers/{perm}; " + e.getMessage());
 			try {

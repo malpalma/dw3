@@ -43,6 +43,7 @@ angular.module('core.translation').
 		  PICK_CONTRACTOR_LABEL: 'Wybierz sprzedawcę',
 		  PICK_UNIT_TYPE_LABEL: 'Wybierz jednostkę miary',
 		  PICK_TAX_RATE_LABEL: 'Wybierz stawkę podatku',
+		  PICK_USER_LABEL: 'Wybierz osobę',
 		  PICK_PAYMENT_METHOD_DAYS_LABEL: 'dni',
 		  PICK_PAYMENT_METHOD_NEW_ALERT: 'Dołącz nową metodę płatności w parametrach lub uzupełnij ręcznie pola: ',
 		  PICK_NOT_FOUND: 'Nie znaleziono',
@@ -80,11 +81,19 @@ angular.module('core.translation').
 		  
 		  DOCSUM_TOTAL_LABEL: 'Ogółem:',
 
+		  DOCSTAGE_EDIT_MAIN_CARD_TITLE: 'Etap obiegu',
+			  
 		  DOCSTAGE_TABLE_USERN_LABEL: 'Użytkownik',
 		  DOCSTAGE_TABLE_STATUS_LABEL: 'Status wejściowy dokumentu',
 		  DOCSTAGE_TABLE_ACTION_LABEL: 'Działanie',
 		  DOCSTAGE_TABLE_DATE_LABEL: 'Data',
 		  DOCSTAGE_TABLE_COMMENTS_LABEL: 'Uwagi',
+		  
+		  BUTTON_INIT_DOCUMENT_WORKFLOW: 'Przekaż do akceptacji',
+		  BUTTON_CONTINUE_DOCUMENT_WORKFLOW: 'Zaakceptuj i przekaż do następnej osoby',
+		  BUTTON_DOCUMENT_FINAL_ACCEPT: 'Zaakceptuj ostatecznie',
+		  BUTTON_DOCUMENT_CLOSE: 'Zakończ obieg bez akceptacji',
+		  BUTTON_DOCUMENT_REJECT: 'Odrzuć dokument',
 		  
 		  CONTRACTOR_EDIT_MAIN_CARD_TITLE: 'Szczegółowe dane kontrahenta',
 
@@ -172,6 +181,7 @@ angular.module('core.translation').
 		  PICK_CONTRACTOR_LABEL: 'Pick seller',
 		  PICK_UNIT_TYPE_LABEL: 'Pick unit type',
 		  PICK_TAX_RATE_LABEL: 'Pick tax rate',
+		  PICK_USER_LABEL: 'Pick user',
 		  PICK_PAYMENT_METHOD_DAYS_LABEL: 'days',
 		  PICK_PAYMENT_METHOD_NEW_ALERT: 'Create new payment method in parameters or fill in the fields manually: ',
 		  PICK_NOT_FOUND: 'Not found',
@@ -209,11 +219,19 @@ angular.module('core.translation').
 		  
 		  DOCSUM_TOTAL_LABEL: 'Total:',
 
+		  DOCSTAGE_EDIT_MAIN_CARD_TITLE: 'Workflow stage',
+
 		  DOCSTAGE_TABLE_USERN_LABEL: 'User',
 		  DOCSTAGE_TABLE_STATUS_LABEL: 'Document initial status',
 		  DOCSTAGE_TABLE_ACTION_LABEL: 'Action',
 		  DOCSTAGE_TABLE_DATE_LABEL: 'Date',
 		  DOCSTAGE_TABLE_COMMENTS_LABEL: 'Comments',
+
+		  BUTTON_INIT_DOCUMENT_WORKFLOW: 'Forward for acceptance',
+		  BUTTON_CONTINUE_DOCUMENT_WORKFLOW: 'Accept and forward to another user',
+		  BUTTON_DOCUMENT_FINAL_ACCEPT: 'Accept final',
+		  BUTTON_DOCUMENT_CLOSE: 'Finish workflow without accept',
+		  BUTTON_DOCUMENT_REJECT: 'Reject document',
 
 		  CONTRACTOR_EDIT_MAIN_CARD_TITLE: 'Contractor details',
 

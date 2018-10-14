@@ -15,6 +15,7 @@ angular.module('myApp', [
   'docItemDetail',
   'docSumList',
   'docStageList',
+  'docStageDetail',
   'contractorList',
   'contractorDetail',
   'userList',
@@ -65,11 +66,14 @@ angular.module('myApp', [
 		    .when('/docsums/:docId', {
 		    	template: '<doc-sum-list></doc-sum-list>'
 		    })
-		    .when('/attachments/:docId', {
-		    	template: '<attachment-list></attachment-list>'
-		    })
+//		    .when('/attachments/:docId', {
+//		    	template: '<attachment-list></attachment-list>'
+//		    })
 		    .when('/docstages/:docId', {
 		    	template: '<doc-stage-list></doc-stage-list>'
+		    })
+		    .when('/docstages/:docId/action/:action', {
+		    	template: '<doc-stage-detail></doc-stage-detail>'
 		    })
 		    .when('/contractors', {
 		    	template: '<contractor-list></contractor-list>'
