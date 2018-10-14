@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -19,7 +21,7 @@ import org.hibernate.annotations.FetchMode;
 public class DocItem {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@ManyToOne
@@ -137,5 +139,38 @@ public class DocItem {
 
 	public int getVersion() {
 		return version;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if(this == other)
+			return true;
+		if(!(other instanceof DocItem))
+			return false;
+		final DocItem otherC = (DocItem) other;
+		EqualsBuilder eb = new EqualsBuilder();
+		eb.append(otherC.document.getInvNo(), this.document.getInvNo());
+		eb.append(otherC.document.getInvDt(), this.document.getInvDt());
+		eb.append(otherC.document.getSellersName(), this.document.getSellersName());
+		eb.append(otherC.document.getGross(), this.document.getGross());
+		eb.append(otherC.getDescription(), this.getDescription());
+		eb.append(otherC.getPricePerUnit(), this.getPricePerUnit());
+		eb.append(otherC.getPrice(), this.getPrice());
+		eb.append(otherC.getTaxDescr(), this.getTaxDescr());
+		return eb.isEquals();
+	}
+	
+	@Override
+	public int hashCode() {
+		HashCodeBuilder hcb = new HashCodeBuilder();
+		hcb.append(this.document.getInvNo());
+		hcb.append(this.document.getInvDt());
+		hcb.append(this.document.getSellersName());
+		hcb.append(this.document.getGross());
+		hcb.append(this.getDescription());
+		hcb.append(this.getPricePerUnit());
+		hcb.append(this.getPrice());
+		hcb.append(this.getTaxDescr());
+		return hcb.toHashCode();
 	}
 }

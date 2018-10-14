@@ -87,6 +87,12 @@ public class DWService {
 		if(d.getId() == null) {
 			docDao.insert(d);
 		} else {
+// Document d is sent without related data, updating without refreshing from database will delete all related data
+			Document d1 = docDao.getById(d.getId());
+			d.setAttachments(d1.getAttachments());
+			d.setItems(d1.getItems());
+			d.setSums(d1.getSums());
+			d.setStages(d1.getStages());
 			docDao.update(d);
 		}
 	}
@@ -114,6 +120,7 @@ public class DWService {
 	public void saveStage(DocStage stage, Long docId, String nextStageUser) throws Exception {
 		Document doc = this.getDocumentById(docId);
 		if(doc != null) {
+			stage.setDocument(doc);
 			//stage.status must be == doc.status and stage.user must be == doc.user, unless doc.status == "nowy" (starting document workflow)
 			if((stage.getStatus().equals(doc.getStatus())) && (doc.getStatus().equals("nowy") || stage.getUsern().equals(doc.getUsern()))) {
 				if(stage.getAction().equals("przekazanie")) {
@@ -158,6 +165,7 @@ public class DWService {
 		Document doc = this.getDocumentById(docId);
 		if(doc != null) {
 			if(item.getId() == null) {
+				item.setDocument(doc);
 				doc.addItem(item);
 				this.saveDocument(doc);
 			} else {
@@ -376,6 +384,7 @@ public class DWService {
 		if(attach.getId() == null) {
 			Document doc = this.getDocumentById(docId);
 			if(doc != null) {
+				attach.setDocument(doc);
 				doc.addAttachment(attach);
 				this.saveDocument(doc);
 			} else {

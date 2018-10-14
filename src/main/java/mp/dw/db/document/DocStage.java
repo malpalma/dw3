@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -99,5 +101,36 @@ public class DocStage {
 
 	public void setComments(String comments) {
 		this.comments = comments;
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		if(this == other)
+			return true;
+		if(!(other instanceof DocStage))
+			return false;
+		final DocStage otherC = (DocStage) other;
+		EqualsBuilder eb = new EqualsBuilder();
+		eb.append(otherC.document.getInvNo(), this.document.getInvNo());
+		eb.append(otherC.document.getInvDt(), this.document.getInvDt());
+		eb.append(otherC.document.getSellersName(), this.document.getSellersName());
+		eb.append(otherC.document.getGross(), this.document.getGross());
+		eb.append(otherC.getDate(), this.getDate());
+		eb.append(otherC.getUsern(), this.getUsern());
+		eb.append(otherC.getAction(), this.getAction());
+		return eb.isEquals();
+	}
+	
+	@Override
+	public int hashCode() {
+		HashCodeBuilder hcb = new HashCodeBuilder();
+		hcb.append(this.document.getInvNo());
+		hcb.append(this.document.getInvDt());
+		hcb.append(this.document.getSellersName());
+		hcb.append(this.document.getGross());
+		hcb.append(this.getDate());
+		hcb.append(this.getUsern());
+		hcb.append(this.getAction());
+		return hcb.toHashCode();
 	}
 }

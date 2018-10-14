@@ -12,6 +12,7 @@ angular.module('documentDetail')
 	    	
 	    	if($routeParams.id == 0) {
 	    		self.document = {};
+	    		self.document.status = 'nowy';
 	    	} else {
 			    self.document = Document.getDocument().get({id: $routeParams.id});
 	    	}

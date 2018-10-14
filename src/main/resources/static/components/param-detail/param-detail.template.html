@@ -28,13 +28,13 @@
                 <label translate="PARAMS_TABLE_DESCRIPTION_LABEL"></label>
                 <input ng-model="$ctrl.param.description" required md-maxlength="100" ng-disabled="!$ctrl.Authentication.enableEdit">
               </md-input-container>
-              <div ng-show="$ctrl.type == 'tr'">
+              <div ng-if="$ctrl.type == 'tr'">
                 <md-input-container class="md-block" flex>
                   <label translate="PARAMS_TABLE_TAX_RATE_VALUE_LABEL"></label>
                   <input ng-model="$ctrl.param.value" type="number" step="0.01" ng-required="$ctrl.type == 'tr'" ng-disabled="!$ctrl.Authentication.enableEdit">
                 </md-input-container>
               </div>
-              <div ng-show="$ctrl.type == 'pm'">
+              <div ng-if="$ctrl.type == 'pm'">
                 <md-input-container class="md-block" flex>
                   <label translate="PARAMS_TABLE_PAYMENT_METHOD_VALUE_LABEL"></label>
                   <input ng-model="$ctrl.param.value" type="number" step="1" ng-required="$ctrl.type == 'pm'" ng-disabled="!$ctrl.Authentication.enableEdit">

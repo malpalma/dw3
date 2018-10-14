@@ -10,6 +10,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -89,5 +91,36 @@ public class Attachment {
 
 	public void setFile(byte[] file) {
 		this.file = file;
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		if(this == other)
+			return true;
+		if(!(other instanceof Attachment))
+			return false;
+		final Attachment otherC = (Attachment) other;
+		EqualsBuilder eb = new EqualsBuilder();
+		eb.append(otherC.document.getInvNo(), this.document.getInvNo());
+		eb.append(otherC.document.getInvDt(), this.document.getInvDt());
+		eb.append(otherC.document.getSellersName(), this.document.getSellersName());
+		eb.append(otherC.document.getGross(), this.document.getGross());
+		eb.append(otherC.getDescription(), this.getDescription());
+		eb.append(otherC.getFileType(), this.getFileType());
+		eb.append(otherC.getFileName(), this.getFileName());
+		return eb.isEquals();
+	}
+	
+	@Override
+	public int hashCode() {
+		HashCodeBuilder hcb = new HashCodeBuilder();
+		hcb.append(this.document.getInvNo());
+		hcb.append(this.document.getInvDt());
+		hcb.append(this.document.getSellersName());
+		hcb.append(this.document.getGross());
+		hcb.append(this.getDescription());
+		hcb.append(this.getFileType());
+		hcb.append(this.getFileName());
+		return hcb.toHashCode();
 	}
 }

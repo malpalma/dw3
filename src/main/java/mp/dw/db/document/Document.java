@@ -2,7 +2,9 @@ package mp.dw.db.document;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,16 +18,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "DW_DOC")
+@DynamicInsert
+@DynamicUpdate
 public class Document {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(nullable = false)
@@ -82,19 +90,19 @@ public class Document {
 	
 	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonIgnore
-	private List<Attachment> attachments = new ArrayList<Attachment>();
+	private Set<Attachment> attachments = new HashSet<Attachment>();
 	
 	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonIgnore
-	private List<DocItem> items = new ArrayList<DocItem>();
+	private Set<DocItem> items = new HashSet<DocItem>();
 
 	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonIgnore
-	private List<DocSum> sums = new ArrayList<DocSum>();
+	private Set<DocSum> sums = new HashSet<DocSum>();
 	
 	@OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	@JsonIgnore
-	private List<DocStage> stages = new ArrayList<DocStage>();
+	private Set<DocStage> stages = new HashSet<DocStage>();
 
 	
 	
@@ -224,17 +232,44 @@ public class Document {
 		this.usern = usern;
 	}
 
-	public List<Attachment> getAttachments() {
+	public Set<Attachment> getAttachments() {
 		return attachments;
 	}
+	
+	public void setAttachments(Set<Attachment> attachments) {
+		this.attachments = attachments;
+	}
+	
+	public Set<DocItem> getItems() {
+		return items;
+	}
+	
+	public void setItems(Set<DocItem> items) {
+		this.items = items;
+	}
 
+	public Set<DocSum> getSums() {
+		return sums;
+	}
+	
+	public void setSums(Set<DocSum> sums) {
+		this.sums = sums;
+	}
+	
+	public Set<DocStage> getStages() {
+		return stages;
+	}
+	
+	public void setStages(Set<DocStage> stages) {
+		this.stages = stages;
+	}
+	
 	public void addAttachment(Attachment attach) {
 		attachments.add(attach);
 		attach.setDocument(this);
 	}
 	
 	public void removeAttachment(Attachment attach) {
-		attach.setDocument(null);
 		attachments.remove(attach);
 	}
 	
@@ -244,7 +279,6 @@ public class Document {
 	}
 	
 	public void removeItem(DocItem item) {
-		item.setDocument(null);
 		items.remove(item);
 	}
 	
@@ -254,7 +288,6 @@ public class Document {
 	}
 	
 	public void removeSum(DocSum sum) {
-		sum.setDocument(null);
 		sums.remove(sum);
 	}
 	
@@ -268,7 +301,31 @@ public class Document {
 	}
 	
 	public void removeStage(DocStage stage) {
-		stage.setDocument(null);
 		stages.remove(stage);
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if(this == other)
+			return true;
+		if(!(other instanceof Document))
+			return false;
+		final Document otherD = (Document) other;
+		EqualsBuilder eb = new EqualsBuilder();
+		eb.append(otherD.getInvNo(), this.getInvNo());
+		eb.append(otherD.getInvDt(), this.getInvDt());
+		eb.append(otherD.getSellersName(), this.getSellersName());
+		eb.append(otherD.getGross(), this.getGross());
+		return eb.isEquals();
+	}
+	
+	@Override
+	public int hashCode() {
+		HashCodeBuilder hcb = new HashCodeBuilder();
+		hcb.append(this.getInvNo());
+		hcb.append(this.getInvDt());
+		hcb.append(this.getSellersName());
+		hcb.append(this.getGross());
+		return hcb.toHashCode();
 	}
 }

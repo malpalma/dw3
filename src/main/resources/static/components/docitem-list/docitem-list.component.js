@@ -10,7 +10,6 @@ angular.module('docItemList')
 		  self.Authentication = Authentication;
 		  self.Toast = Toast;
 		  self.docId = $routeParams.docId;
-		  self.refresh = 1;
 		  
 		  Document.getDocStatus().charTable({id: self.docId})
 		  	.$promise.then(function(response) {
@@ -41,7 +40,7 @@ angular.module('docItemList')
 				  	.then(function() {
 //				  		how refresh doc-sum-list without reloading?
 //				  		self.getDocItems();
-				  		window.location.reload();
+				  		window.location.replace('#!/docitems/' + self.docId);
 				  		Toast.showToast($translate.instant('DELETE_TOAST_TEXT_CONTENT'));
 				  	})
 				  	.catch(function(reason) {

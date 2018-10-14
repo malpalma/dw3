@@ -14,6 +14,7 @@ angular.module('paramDetail')
 		  if($routeParams.id == 0) {
 			  self.param = {};
 			  self.param.type = self.type;
+			  self.param.value = 0;
 		  } else {
 			  self.param = Param.getParam().get({id: $routeParams.id});
 		  }

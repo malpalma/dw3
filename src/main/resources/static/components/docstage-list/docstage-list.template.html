@@ -34,7 +34,7 @@
 	   			$ctrl.Authentiaction.session.isAdmin == 'true')">
 	  </md-button>
 	  <md-button href="#!/docstages/{{$ctrl.document.id}}/action/accept" translate="BUTTON_DOCUMENT_FINAL_ACCEPT" aria-label="{{'BUTTON_DOCUMENT_FINAL_ACCEPT' | translate}}" class="md-raised"
-	   	ng-show="($ctrl.Authentiacation.session.canAccept == 'true' && ($ctrl.Authentication.session.name == $ctrl.document.usern || $ctrl.document.status == 'nowy'))
+	   	ng-show="($ctrl.Authentication.session.canAccept == 'true' && ($ctrl.Authentication.session.name == $ctrl.document.usern || $ctrl.document.status == 'nowy'))
 	   			||
 	   			$ctrl.Authentication.session.isAdmin == 'true'">
 	  </md-button>
@@ -45,7 +45,7 @@
 	   			$ctrl.Authentiaction.session.isAdmin == 'true')">
 	  </md-button>
 	  <md-button href="#!/docstages/{{$ctrl.document.id}}/action/close" translate="BUTTON_DOCUMENT_CLOSE" aria-label="{{'BUTTON_DOCUMENT_CLOSE' | translate}}" class="md-raised"
-	   	ng-show="($ctrl.Authentiacation.session.canAccept == 'true' && ($ctrl.Authentication.session.name == $ctrl.document.usern || $ctrl.document.status == 'nowy'))
+	   	ng-show="($ctrl.Authentication.session.canAccept == 'true' && ($ctrl.Authentication.session.name == $ctrl.document.usern || $ctrl.document.status == 'nowy'))
 	   			||
 	   			$ctrl.Authentication.session.isAdmin == 'true'">
 	  </md-button>
