@@ -87,7 +87,7 @@
 	</properties>
      
 	<build>
-		<finalName>dw3</finalName>
+		<finalName>dw</finalName>
     
 		<plugins>
 			<plugin>
