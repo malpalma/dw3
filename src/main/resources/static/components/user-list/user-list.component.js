@@ -11,10 +11,18 @@ angular.module('userList')
 		  self.Toast = Toast;
 		  
 		  self.getUsers = function() {
-			  var queryResult = User.getUsers().query();
-			  queryResult.$promise.then(function() {
-				  self.users = new NgTableParams({}, {dataset: queryResult});
-			  })
+			  User.getUsers().query()
+			  	.$promise
+			  		.then(function(response) {
+			  			self.users = new NgTableParams(
+			  								{sorting: {name: "asc"}}, 
+			  								{dataset: response});
+			  		})
+			  		.catch(function(reason) {
+			  			console.log('CATCH in userList component, User.getUsers().query():');
+			  			console.log(reason);
+			  			Toast.showErrorToast($translate.instant('ERROR'));
+			  		})
 		  };
 		  
 		  self.deleteUser = function(id) {
@@ -24,17 +32,17 @@ angular.module('userList')
 			  					.ok($translate.instant('CONFIRM_OK_LABEL'))
 			  					.cancel($translate.instant('CONFIRM_CANCEL_LABEL'));
 			  $mdDialog.show(confirm).then(function() {
-				  var result = User.deleteUser().delete({id: id});
-				  result.$promise
-				  	.then(function() {
-				  		self.getUsers();
-				  		Toast.showToast($translate.instant('DELETE_TOAST_TEXT_CONTENT'));
-				  	})
-				  	.catch(function() {
-				  		console.log('catch:');
-				  		console.log(result);
-				  		Toast.showErrorToast($translate.instant('ERROR'));
-				  	})
+				  User.deleteUser().delete({id: id})
+				  	.$promise
+				  		.then(function(response) {
+				  			self.getUsers();
+				  			Toast.showToast($translate.instant('DELETE_TOAST_TEXT_CONTENT'));
+				  		})
+				  		.catch(function(reason) {
+				  			console.log('CATCH in userList component, User.deleteUser().delete({id: id}):');
+				  			console.log(reason);
+				  			Toast.showErrorToast($translate.instant('ERROR'));
+				  		})
 			  })
 		  };
 		  

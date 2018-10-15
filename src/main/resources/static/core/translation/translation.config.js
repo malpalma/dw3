@@ -124,6 +124,7 @@ angular.module('core.translation').
 		  DELETE_LABEL: 'Usuń',
 		  NEW_LABEL: 'Nowy',
 		  SAVE_LABEL: 'Zapisz',
+		  BACK_LABEL: 'Powrót',
 		  
 		  DELETE_TOAST_TEXT_CONTENT: 'Usunięto',
 		  SAVE_TOAST_TEXT_CONTENT: 'Zapisano',
@@ -262,6 +263,7 @@ angular.module('core.translation').
 		  DELETE_LABEL: 'Delete',
 		  NEW_LABEL: 'New',
 		  SAVE_LABEL: 'Save',
+		  BACK_LABEL: 'Back',
 
 		  DELETE_TOAST_TEXT_CONTENT: 'Deleted',
 		  SAVE_TOAST_TEXT_CONTENT: 'Saved',

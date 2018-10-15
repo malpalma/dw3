@@ -10,6 +10,7 @@
 	</div>
 
     <md-card-content>
+    <md-content>
 	  <table ng-table="$ctrl.documents" show-filter="true" class="table table-condensed table-striped table-bordered">
 	    <tr ng-repeat="document in $data">
 	      <td title="'DOCUMENTS_TABLE_INV_NO_LABEL' | translate" filter="{invNo: 'text'}" sortable="'invNo'" ng-attr-title="{{document.invNo}}">
@@ -62,6 +63,7 @@
 	      </td>
 	    </tr>
 	  </table>
+	<md-content>
 	</md-card-content>
   </md-card>
 </md-content>

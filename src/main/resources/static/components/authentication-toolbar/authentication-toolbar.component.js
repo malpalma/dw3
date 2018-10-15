@@ -6,7 +6,6 @@ angular.module('authenticationToolbar')
 	  controller: ['Authentication', '$mdDialog', '$scope', '$mdToast', function AuthenticationToolbarController(Authentication, $mdDialog, $scope, $mdToast) {
 		  var self = this;
 		  self.Authentication = Authentication;
-//		  self.Authentication.credentials.username = "super";
 		  
 		  self.openLoginDialog = function($event) {
 			  $mdDialog.show({
@@ -15,12 +14,7 @@ angular.module('authenticationToolbar')
 				  preserveScope: true,
 				  templateUrl: 'components/authentication-toolbar/authentication-dialog.template.html',
 				  controller: function AuthenticationDialogController($scope, $mdDialog) {
-//					  $scope.closeDialog = function() {
-//						  $mdDialog.hide();
-//					  }
 				  }
-//				  parent: angular.element(document.body),
-//				  targetEvent: $event,
 			  });
 		  };
 		  
@@ -29,8 +23,6 @@ angular.module('authenticationToolbar')
 		  };
 		  
 		  self.login = function() {
-//			  console.log('login');
-//			  console.log(self.Authentication);
 			  self.Authentication.login();
 			  $mdDialog.hide();
 		  };

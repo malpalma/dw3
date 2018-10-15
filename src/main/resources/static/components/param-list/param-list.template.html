@@ -14,12 +14,13 @@
     </div>
 
 	<div ng-show="$ctrl.Authentication.enableEdit">
-	  <md-card-actions layout="row" layout-align="start">
+	  <md-card-actions layout="row" layout-align="start" layout-xs="column">
 	    <md-button href="#!/params/{{$ctrl.type}}/id/0" translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}"class="md-raised"></md-button>
 	  </md-card-actions>
 	</div>
 
     <md-card-content>
+    <md-content>
       <div ng-show="$ctrl.type == 'tr'">
 	    <table ng-table="$ctrl.params" show-filter="true" class="table table-condensed table-striped table-bordered">
 	      <tr ng-repeat="param in $data">
@@ -98,6 +99,7 @@
 	      </tr>
 	    </table>
       </div>
+    </md-content>
     </md-card-content>
   </md-card>
 </md-content>

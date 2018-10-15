@@ -46,7 +46,10 @@
         </div>        
         <md-card-actions layout="column">
           <md-button ng-click="$ctrl.saveParam()" translate="SAVE_LABEL" aria-label="{{'SAVE_LABEL' | translate}}" class="md-raised"
-          	ng-show="$ctrl.Authentication.enableEdit" ng-disabled="!paramForm.$dirty || paramForm.$invalid"></md-button>
+          	ng-show="$ctrl.Authentication.enableEdit" ng-disabled="!paramForm.$dirty || paramForm.$invalid">
+          </md-button>
+          <md-button href="#!/params/{{$ctrl.type}}" translate="BACK_LABEL"aria-label="{{'BACK_LABEL' | translate}}" class="md-raised">
+          </md-button>
         </md-card-actions>
       </md-card-content>
     </md-card>

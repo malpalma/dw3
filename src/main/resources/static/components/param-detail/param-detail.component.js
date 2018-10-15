@@ -20,17 +20,17 @@ angular.module('paramDetail')
 		  }
 		  
 		  self.saveParam = function() {
-			  var result = Param.saveParam().save(self.param);
-			  result.$promise
-			  	.then(function() {
-			  		window.location.replace('#!/params/' + self.type);
-			  		Toast.showToast($translate.instant('SAVE_TOAST_TEXT_CONTENT'));
-			  	})
-			  	.catch(function() {
-			  		console.log('catch:');
-			  		console.log(result);
-			  		Toast.showErrorToast($translate.instant('ERROR'));
-			  	})
+			  Param.saveParam().save(self.param)
+			  	.$promise
+			  		.then(function(response) {
+			  			window.location.replace('#!/params/' + self.type);
+			  			Toast.showToast($translate.instant('SAVE_TOAST_TEXT_CONTENT'));
+			  		})
+			  		.catch(function(reason) {
+			  			console.log('CATCH in paramDetail component, Param.saveParam().save(self.param):');
+			  			console.log(reason);
+			  			Toast.showErrorToast($translate.instant('ERROR'));
+			  		})
 		  }
 	  }]
   });

@@ -3,6 +3,7 @@
     <md-card-header translate="DOCUMENT_DETAILS_SUMS_BUTTON_LABEL">
     </md-card-header>
     <md-card-content>
+    <md-content>
 	<table ng-table="$ctrl.docSumList" show-filter="true" class="table table-condensed table-striped table-bordered">
 	  <tr ng-repeat="sum in $data">
 	    <td title="'DOCSUM_TABLE_TAX_DESCR_LABEL' | translate" filter="{taxDescr: 'text'}" sortable="'taxDescr'">
@@ -27,6 +28,7 @@
 	    </tr>
 	  </tfoot>
 	</table>
+	</md-content>
 	</md-card-content>
   </md-card>
 </md-content>

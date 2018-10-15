@@ -12,10 +12,18 @@ angular.module('paramList').
 		  self.type = $routeParams.type;
 		  
 		  self.getParams = function() {
-			  var queryResult = Param.getParams().query({type: self.type});
-			  queryResult.$promise.then(function() {
-				  self.params = new NgTableParams({}, {dataset: queryResult});
-			  })
+			  Param.getParams().query({type: self.type})
+			  	.$promise
+			  		.then(function(response) {
+			  			self.params = new NgTableParams(
+			  								{sorting: {code: "asc", description: "asc"}}, 
+			  								{dataset: response});
+			  		})
+			  		.catch(function(reason) {
+			  			console.log('CATCH in paramList component, Param.getParams().query({type: self.type}):');
+			  			console.log(reason);
+			  			Toast.showErrorToast($translate.instant('ERROR'));
+			  		})
 		  };
 		  
 		  self.deleteParam = function(id) {
@@ -33,17 +41,17 @@ angular.module('paramList').
 			  					.ok($translate.instant('CONFIRM_OK_LABEL'))
 			  					.cancel($translate.instant('CONFIRM_CANCEL_LABEL'));
 			  $mdDialog.show(confirm).then(function() {
-				  var result = Param.deleteParam().delete({id: id});
-				  result.$promise
-				  	.then(function() {
-				  		self.getParams(self.type);
-				  		Toast.showToast($translate.instant('DELETE_TOAST_TEXT_CONTENT'));
-				  	})
-				  	.catch(function() {
-				  		console.log('catch:');
-				  		console.log(result);
-				  		Toast.showErrorToast($translate.instant('ERROR'));
-				  	})
+				  Param.deleteParam().delete({id: id})
+				  	.$promise
+				  		.then(function(response) {
+				  			self.getParams(self.type);
+				  			Toast.showToast($translate.instant('DELETE_TOAST_TEXT_CONTENT'));
+				  		})
+				  		.catch(function(reason) {
+				  			console.log('CATCH in paramList component, Param.deleteParam().delete({id: id}):');
+				  			console.log(reason);
+				  			Toast.showErrorToast($translate.instant('ERROR'));
+				  		})
 			  })
 		  };
 		  

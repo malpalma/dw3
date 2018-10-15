@@ -4,12 +4,13 @@
     </md-card-header>
     
 	<div ng-show="$ctrl.Authentication.enableEdit">
-	  <md-card-actions layout="row" layout-align="start">
+	  <md-card-actions layout="row" layout-align="start" layout-xs="column">
 	    <md-button href="#!/contractors/0" translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}" class="md-raised"></md-button>
 	  </md-card-actions>
 	</div>
     
     <md-card-content>
+    <md-content>
 	  <table ng-table="$ctrl.contractors" show-filter="true" class="table table-condensed table-striped table-bordered">
 	    <tr ng-repeat="contractor in $data">
 	      <td title="'CONTRACTORS_TABLE_NAME_LABEL' | translate" filter="{ name: 'text' }" sortable="'name'" ng-attr-title="{{contractor.name}}">
@@ -40,6 +41,7 @@
 	      </td>
 	    </tr>
 	  </table>
+	</md-content>
 	</md-card-content>
   </md-card>
 </md-content>

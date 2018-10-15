@@ -22,10 +22,16 @@ angular.module('documentDetail')
 		    self.selectedItemPaymentMethodAutocomplete;
 		    
 		    self.getPaymentMethods = function() {
-		    	var queryResult = Param.getParams().query({type: 'pm'});
-		    	queryResult.$promise.then(function() {
-		    		self.paymentMethodList = queryResult;
-		    	});
+		    	Param.getParams().query({type: 'pm'})
+		    		.$promise
+		    			.then(function(response) {
+		    				self.paymentMethodList = response;
+		    			})
+		    			.catch(function(reason) {
+		    				console.log('CATCH in documentDetail component, Param.getParams().query({type: "pm"}):');
+		    				console.log(reason);
+		    				Toast.showErrorToast($translate.instant('ERROR'));
+		    			})
 		    }
 		    
 		    self.getPaymentMethods();
@@ -59,16 +65,17 @@ angular.module('documentDetail')
 //	    	};
 	    	
 	    	self.saveDocument = function() {
-	    		var result = Document.saveDocument().save(self.document);
-	    		result.$promise
-	    			.then(function() {
-	    				window.location.replace('#!/documents');
-	    				Toast.showToast($translate.instant('SAVE_TOAST_TEXT_CONTENT'));
-	    			})
-	    			.catch(function(reason) {
-	    				console.log(reason);
-	    				Toast.showErrorToast($translate.instant('ERROR'));
-	    			})
+	    		Document.saveDocument().save(self.document)
+	    			.$promise
+	    				.then(function(response) {
+	    					window.location.replace('#!/documents');
+	    					Toast.showToast($translate.instant('SAVE_TOAST_TEXT_CONTENT'));
+	    				})
+	    				.catch(function(reason) {
+	    					console.log('CATCH in documentDetail component, Document.saveDocument().save(self.document):');
+	    					console.log(reason);
+	    					Toast.showErrorToast($translate.instant('ERROR'));
+	    				})
 	    	};
 	    	
 	  }]

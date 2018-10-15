@@ -17,16 +17,17 @@ angular.module('contractorDetail')
 		  }
 		  
 		  self.saveContractor = function() {
-			  var result = Contractor.saveContractor().save(self.contractor);
-			  result.$promise
-			  	.then(function() {
-			  		window.location.replace('#!/contractors');
-			  		Toast.showToast($translate.instant('SAVE_TOAST_TEXT_CONTENT'));
-			  	})
-			  	.catch(function(reason) {
-			  		console.log(reason);
-			  		Toast.showErrorToast($translate.instant('ERROR'));
-			  	})
+			  Contractor.saveContractor().save(self.contractor)
+			  	.$promise
+			  		.then(function(response) {
+			  			window.location.replace('#!/contractors');
+			  			Toast.showToast($translate.instant('SAVE_TOAST_TEXT_CONTENT'));
+			  		})
+			  		.catch(function(reason) {
+			  			cosole.log('CATCH in contractorDetail component, Contractor.saveContractor().save(self.contractor):')
+			  			console.log(reason);
+			  			Toast.showErrorToast($translate.instant('ERROR'));
+			  		})
 		  }
 	  }]
   });

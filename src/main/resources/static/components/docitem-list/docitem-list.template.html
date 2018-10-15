@@ -3,13 +3,15 @@
     <md-card-header translate="DOCUMENT_DETAILS_ITEMS_BUTTON_LABEL">
     </md-card-header>
 
-	<div ng-show="$ctrl.Authentication.enableEdit && $ctrl.docStatus == 'nowy'">
-	  <md-card-actions layout="row" layout-align="start">
-	    <md-button href="#!/docitems/0/docid/{{$ctrl.docId}}" translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}" class="md-raised"></md-button>
-	  </md-card-actions>
-	</div>
+	<md-card-actions layout="row" layout-align="start" layout-xs="column">
+	  <md-button href="#!/docitems/0/docid/{{$ctrl.docId}}" translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}" class="md-raised"
+	  	ng-show="$ctrl.Authentication.enableEdit && $ctrl.docStatus == 'nowy'">
+	  </md-button>
+      <md-button href="#!/documents" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
+	</md-card-actions>
     
     <md-card-content>
+    <md-content>
 	  <table ng-table="$ctrl.docItemList" show-filter="true" class="table table-condensed table-striped table-bordered">
 	    <tr ng-repeat="item in $data">
 	      <td title="'DOCITEM_TABLE_DESCRIPTION_LABEL' | translate" filter="{description: 'text'}" sortable="'description'" ng-attr-title="{{item.description}}">
@@ -49,6 +51,7 @@
 	      </td>
 	    </tr>
 	  </table>
+	</md-content>
 	</md-card-content>
   </md-card>
 </md-content>

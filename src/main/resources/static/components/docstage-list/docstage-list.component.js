@@ -16,19 +16,17 @@ angular.module('docStageList').
 			  DocStage.getStages().query({docId: self.docId})
 			  	.$promise
 			  		.then(function(response) {
-			  			self.docStageList = new NgTableParams({}, {dataset: response});
+			  			self.docStageList = new NgTableParams(
+			  									{sorting: {date: "asc"}}, 
+			  									{dataset: response});
 			  		}).
 			  		catch(function(reason) {
-		  			console.log('CATCH in docStageList component, DocStage.getStages().query({docId: self.docId}):');
-		  			console.log(reason);
-		  			Toast.showErrorToast($translate.instant('ERROR'));
+			  			console.log('CATCH in docStageList component, DocStage.getStages().query({docId: self.docId}):');
+			  			console.log(reason);
+			  			Toast.showErrorToast($translate.instant('ERROR'));
 			  		});
 		  }
 		  
 		  self.getDocStages();
-		  
-		  self.initAction = function(action) {
-			  
-		  }
 	  }]
   });

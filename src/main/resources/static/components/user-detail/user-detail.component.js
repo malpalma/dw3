@@ -17,17 +17,17 @@ angular.module('userDetail')
 		  }
 		  
 		  self.saveUser = function() {
-			  var result = User.saveUser().save(self.user);
-			  result.$promise
-			  	.then(function() {
-			  		window.location.replace('#!/users');
-			  		Toast.showToast($translate.instant('SAVE_TOAST_TEXT_CONTENT'));
-			  	})
-			  	.catch(function() {
-			  		console.log('catch:');
-			  		console.log(result);
-			  		Toast.showErrorToast($translate.instant('ERROR'));
-			  	})
+			  User.saveUser().save(self.user)
+			  	.$promise
+			  		.then(function(response) {
+			  			window.location.replace('#!/users');
+			  			Toast.showToast($translate.instant('SAVE_TOAST_TEXT_CONTENT'));
+			  		})
+			  		.catch(function(reason) {
+			  			console.log('CATCH in userDetail component, User.saveUser().save(self.user):');
+			  			console.log(reason);
+			  			Toast.showErrorToast($translate.instant('ERROR'));
+			  		})
 		  }
 	  }]
   });
