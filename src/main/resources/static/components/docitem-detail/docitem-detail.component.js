@@ -17,6 +17,7 @@ angular.module('docItemDetail')
 		  			self.docStatus = response.collection;
 		  		})
 		  		.catch(function(reason) {
+		  			self.docStatus = '?';
 		  			console.log('CATCH in docItemDetail component, Document.getDocStatus().charTable({id: self.docId}):');
 		  			console.log(reason);
 		  			Toast.showErrorToast($translate.instant('ERROR'));
