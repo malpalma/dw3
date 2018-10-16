@@ -7,6 +7,8 @@ angular.module('authenticationToolbar')
 		  var self = this;
 		  self.Authentication = Authentication;
 		  
+		  self.screenWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+		  
 		  self.openLoginDialog = function($event) {
 			  $mdDialog.show({
 				  clickOutsideToClose: true,

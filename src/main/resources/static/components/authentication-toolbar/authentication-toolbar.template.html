@@ -1,2 +1,16 @@
-<md-button ng-click="$ctrl.openLoginDialog($event)" translate="BUTTON_LOGIN" ng-disabled="$ctrl.Authentication.authenticated" aria-label="{{'BUTTON_LOGIN' | translate}}"></md-button>
-<md-button ng-click="$ctrl.logout()" translate="BUTTON_LOGOUT" ng-disabled="!$ctrl.Authentication.authenticated" aria-label="{{'BUTTON_LOGOUT' | translate}}"></md-button>
+<div ng-if="$ctrl.screenWidth < 600">
+  <md-button ng-click="$ctrl.openLoginDialog($event)" ng-disabled="$ctrl.Authentication.authenticated" aria-label="{{'BUTTON_LOGIN' | translate}}" class="md-icon-button">
+    <md-icon md-svg-icon="img/icons/sign-in.svg"></md-icon>
+	<md-tooltip>{{'BUTTON_LOGIN' | translate}}</md-tooltip>
+  </md-button>
+  <md-button ng-click="$ctrl.logout()" ng-disabled="!$ctrl.Authentication.authenticated" aria-label="{{'BUTTON_LOGOUT' | translate}}" class="md-icon-button">
+    <md-icon md-svg-icon="img/icons/sign-out-option.svg"></md-icon>
+	<md-tooltip>{{'BUTTON_LOGOUT' | translate}}</md-tooltip>
+  </md-button>
+</div>
+<div ng-if="$ctrl.screenWidth >= 600">
+  <md-button ng-click="$ctrl.openLoginDialog($event)" translate="BUTTON_LOGIN" ng-disabled="$ctrl.Authentication.authenticated" aria-label="{{'BUTTON_LOGIN' | translate}}">
+  </md-button>
+  <md-button ng-click="$ctrl.logout()" translate="BUTTON_LOGOUT" ng-disabled="!$ctrl.Authentication.authenticated" aria-label="{{'BUTTON_LOGOUT' | translate}}">
+  </md-button>
+</div>
