@@ -22,6 +22,7 @@
                 <input ng-model="$ctrl.docItem.quantity" type="number" step="any" required dw-greater-then-zero ng-disabled="!$ctrl.Authentication.enableEdit" ng-change="$ctrl.compute()">
               </md-input-container>
               <div layout="row" layout-xs="column">
+                <div ng-show="$ctrl.Authentication.enableEdit && $ctrl.docStatus == 'nowy'">
                 <form ng-submit="$event.preventDefault()">
                   <span>
                     <md-autocomplete
@@ -43,6 +44,7 @@
                     </md-autocomplete>
                   </span>
                 </form>
+                </div>
                 <md-input-container class="md-block" flex>
                   <label translate="DOCITEM_TABLE_UNIT_TYPE_LABEL"></label>
                   <input ng-model="$ctrl.docItem.unitType" md-maxlength="100" required ng-disabled="!$ctrl.Authentication.enableEdit">
@@ -61,6 +63,7 @@
                 <input ng-model="$ctrl.docItem.price" type="number" step="0.01" ng-disabled="!$ctrl.Authentication.enableEdit">
               </md-input-container>
               <div layout="row" layout-xs="column">
+                <div ng-show="$ctrl.Authentication.enableEdit && $ctrl.docStatus == 'nowy'">
                 <form ng-submit="$event.preventDefault()">
                   <span>
                     <md-autocomplete
@@ -82,6 +85,7 @@
                     </md-autocomplete>
                   </span>
                 </form>
+                </div>
                 <md-input-container class="md-block" flex>
                   <label translate="DOCITEM_TABLE_TAX_DESCR_LABEL"></label>
                   <input ng-model="$ctrl.docItem.taxDescr" md-maxlength="100" disabled>

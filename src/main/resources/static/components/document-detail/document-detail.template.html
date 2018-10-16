@@ -36,6 +36,7 @@
                   </md-input-container>
                 </div>
                 <div layout="row" layout-xs="column" layout-sm="column">
+                  <div ng-show="$ctrl.Authentication.enableEdit && $ctrl.document.status == 'nowy'">
                   <form ng-submit="$event.preventDefault()">
                     <span>
                       <md-autocomplete
@@ -58,6 +59,7 @@
                       </md-autocomplete>
                     </span>
                   </form>
+                  </div>
                   <md-input-container class="md-block" flex>
                     <label translate="DOCUMENTS_TABLE_PAYMENT_METHOD_LABEL"></label>
                     <input ng-model="$ctrl.document.paymentMethod" md-maxlength="100" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
@@ -77,6 +79,7 @@
             <md-card-content>
               <div layout="column">
                 <div layout="row" layout-xs="column" layout-sm="column">
+                  <div ng-show="$ctrl.Authentication.enableEdit && $ctrl.document.status == 'nowy'">
                   <form ng-submit="$event.preventDefault()">
                     <span>
                       <md-autocomplete
@@ -106,6 +109,7 @@
                       </md-autocomplete>
                     </span>
                   </form>
+                  </div>
                   <md-input-container class="md-block" flex>
                     <label translate="DOCUMENTS_TABLE_SELLERS_NAME_LABEL"></label>
                     <input ng-model="$ctrl.document.sellersName" required md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
