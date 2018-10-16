@@ -1,15 +1,24 @@
 <md-content>
   <md-card>
     <div ng-show="$ctrl.type == 'tr'">
-      <md-card-header translate="TAX_RATES_MENU_LABEL">
+      <md-card-header>
+        <md-card-header-text>
+          <span translate="TAX_RATES_MENU_LABEL" class="md-title"></span>
+        </md-card-header-text>
       </md-card-header>
     </div>
     <div ng-show="$ctrl.type == 'pm'">
-      <md-card-header translate="PAYMENT_METHODS_MENU_LABEL">
+      <md-card-header>
+        <md-card-header-text>
+          <span translate="PAYMENT_METHODS_MENU_LABEL" class="md-title"></span>
+        </md-card-header-text>
       </md-card-header>
     </div>
     <div ng-show="$ctrl.type == 'ut'">
-      <md-card-header translate="UNIT_TYPES_MENU_LABEL">
+      <md-card-header>
+        <md-card-header-text>
+          <span translate="UNIT_TYPES_MENU_LABEL" class="md-title"></span>
+        </md-card-header-text>
       </md-card-header>
     </div>
 

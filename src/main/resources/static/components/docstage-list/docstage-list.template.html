@@ -1,7 +1,12 @@
 <md-content>
   <md-card>
-    <md-card-header translate="DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL">
+
+    <md-card-header>
+      <md-card-header-text>
+        <span translate="DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL" class="md-title"></span>
+      </md-card-header-text>
     </md-card-header>
+
 	<md-card-actions layout="row" layout-align="start" layout-xs="column">
 	  <md-button href="#!/docstages/{{$ctrl.document.id}}/action/send" translate="BUTTON_INIT_DOCUMENT_WORKFLOW" aria-label="{{'BUTTON_INIT_DOCUMENT_WORKFLOW' | translate}}" class="md-raised"
 	  	ng-show="$ctrl.document.status == 'nowy' && $ctrl.Authentication.session.canEdit == 'true'">
@@ -32,6 +37,7 @@
 	  </md-button>
       <md-button href="#!/documents" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
 	</md-card-actions>
+	
     <md-card-content>
     <md-content>
 	  <table ng-table="$ctrl.docStageList" show-filter="true" class="table table-condensed table-striped table-bordered">
@@ -55,5 +61,6 @@
 	  </table>
 	</md-content>
 	</md-card-content>
+  
   </md-card>
 </md-content>

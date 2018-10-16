@@ -1,7 +1,12 @@
 <md-content>
   <md-card>
-    <md-card-header translate="DOCUMENT_DETAILS_SUMS_BUTTON_LABEL">
+
+    <md-card-header>
+      <md-card-header-text>
+        <span translate="DOCUMENT_DETAILS_SUMS_BUTTON_LABEL" class="md-title"></span>
+      </md-card-header-text>
     </md-card-header>
+
     <md-card-content>
     <md-content>
 	<table ng-table="$ctrl.docSumList" show-filter="true" class="table table-condensed table-striped table-bordered">
@@ -30,5 +35,6 @@
 	</table>
 	</md-content>
 	</md-card-content>
+	
   </md-card>
 </md-content>
