@@ -11,6 +11,7 @@ angular.module('myApp', [
   'core',
   'documentList',
   'documentDetail',
+  'documentHeader',
   'docItemList',
   'docItemDetail',
   'docSumList',
@@ -37,12 +38,11 @@ angular.module('myApp', [
 		  $httpProvider.defaults.withCredentials = true;
 		  $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 		  
-//		  NOT WORKING ??
 		  $mdThemingProvider
 		    .theme('default')
 		    .primaryPalette('blue')
-		    .accentPalette('teal')
-		    .warnPalette('red')
+		    .accentPalette('indigo')
+		    .warnPalette('purple')
 		    .backgroundPalette('grey');
 		  $mdThemingProvider
 		    .theme('docs-dark');

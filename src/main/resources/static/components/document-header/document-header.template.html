@@ -1,0 +1,23 @@
+  <md-card class="header">
+<!--   <md-card md-colors="::{background: 'default-primary-hue-3', color: 'default-primary-hue-3-contrast'}"> -->
+    <md-card-content>
+      <div layout="row" layout-xs="column">
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_INV_NO_LABEL"></label>
+                    <input ng-model="$ctrl.document.invNo" disabled>
+                  </md-input-container>
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_INV_DT_LABEL"></label>
+                    <md-datepicker ng-model="$ctrl.document.invDt" disabled></md-datepicker>
+                  </md-input-container>
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_GROSS_LABEL"></label>
+                    <input ng-model="$ctrl.document.gross" type="number" step="0.01" disabled>
+                  </md-input-container>
+                  <md-input-container class="md-block" flex>
+                    <label translate="DOCUMENTS_TABLE_SELLERS_NAME_LABEL"></label>
+                    <input ng-model="$ctrl.document.sellersName" disabled>
+                  </md-input-container>
+      </div>
+    </md-card-content>
+  </md-card>
