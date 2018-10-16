@@ -1,14 +1,16 @@
-<md-content layout-padding>
-  <form name="docStageForm">
-    <md-card>
-      <md-card-header translate="DOCSTAGE_EDIT_MAIN_CARD_TITLE">
-      </md-card-header>
-      <md-card-content>
-        <div layout="row" layout-xs="column">
-          <div layout="column" flex>
-            <md-card>
-              <md-card-content>
-                <div ng-show="$ctrl.action == 'send' || $ctrl.action == 'reject'">
+<form name="docStageForm">
+  <md-card>
+
+    <md-card-header translate="DOCSTAGE_EDIT_MAIN_CARD_TITLE">
+    </md-card-header>
+
+    <md-card-content>
+      <div layout="row" layout-xs="column">
+
+        <md-content flex>
+          <md-card>
+            <md-card-content>
+              <div ng-show="$ctrl.action == 'send' || $ctrl.action == 'reject'">
                 <form ng-submit="$event.preventDefault()">
                   <span>
                     <md-autocomplete
@@ -31,21 +33,23 @@
                   </span>
                 </form>
                 <br>
-                </div>
-                <md-input-container class="md-block" flex>
-                  <label translate="DOCSTAGE_TABLE_COMMENTS_LABEL"></label>
-                  <input ng-model="$ctrl.docStage.comments" md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableAccept">
-                </md-input-container>
-              </md-card-content>
-            </md-card>
-          </div>
-        </md-card-content>
+              </div>
+              <md-input-container class="md-block" flex>
+                <label translate="DOCSTAGE_TABLE_COMMENTS_LABEL"></label>
+                <input ng-model="$ctrl.docStage.comments" md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableAccept">
+              </md-input-container>
+            </md-card-content>
+          </md-card>
+        </md-content>
+        
         <md-card-actions layout="column">
           <md-button ng-click="$ctrl.saveStage()" translate="SAVE_LABEL" aria-label="{{'SAVE_LABEL' | translate}}" class="md-raised"
           		ng-show="$ctrl.Authentication.enableAccept" ng-disabled="docStageForm.$invalid">
           </md-button>
+          <md-button href="#!/docstages/{{$ctrl.docId}}" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
         </md-card-actions>
+
       </div>
-    </md-card>
-  </form>
-</md-content>
+    </md-card-content>
+  </md-card>
+</form>

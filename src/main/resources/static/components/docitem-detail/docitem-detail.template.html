@@ -1,11 +1,13 @@
-<md-content layout-padding>
-  <form name="docItemForm">
-    <md-card>
-      <md-card-header translate="DOCITEM_EDIT_MAIN_CARD_TITLE">
-      </md-card-header>
-      <md-card-content layout="row" layout-xs="column">
-        <div layout="column" flex>
+<form name="docItemForm">
+  <md-card>
+
+    <md-card-header translate="DOCITEM_EDIT_MAIN_CARD_TITLE">
+    </md-card-header>
+
+    <md-card-content>
+      <div layout="row" layout-xs="column">
           
+        <md-content flex>
           <md-card>
             <md-card-content>
               <md-input-container class="md-block" flex>
@@ -88,14 +90,16 @@
               </div>
             </md-card-content>
           </md-card>
+        </md-content>
           
-        </div>        
         <md-card-actions layout="column">
           <md-button ng-click="$ctrl.saveDocItem()" translate="SAVE_LABEL" aria-label="{{'SAVE_LABEL' | translate}}" class="md-raised"
           	ng-show="$ctrl.Authentication.enableEdit" ng-disabled="!docItemForm.$dirty || docItemForm.$invalid">
           </md-button>
+          <md-button href="#!/docitems/{{$ctrl.docId}}" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
         </md-card-actions>
-      </md-card-content>
-    </md-card>
-  </form>
-</md-content>
+      
+      </div>  
+    </md-card-content>
+  </md-card>
+</form>

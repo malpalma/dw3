@@ -1,9 +1,12 @@
-<md-content layout-padding>
-  <form name="documentForm">
-    <md-card>
-      <md-card-header translate="DOCUMENT_EDIT_MAIN_CARD_TITLE">
-      </md-card-header>
-      <md-card-content layout="row">
+<form name="documentForm">
+  <md-card>
+
+    <md-card-header translate="DOCUMENT_EDIT_MAIN_CARD_TITLE">
+    </md-card-header>
+
+    <md-card-content>
+      <div layout="row" layout-xs="column" layout-sm="column">
+      
         <div layout="column" flex>
         
           <md-card>
@@ -11,7 +14,7 @@
             </md-card-header>
             <md-card-content>
               <div layout="column">
-                <div layout="row" layout-xs="column">
+                <div layout="row" layout-xs="column" layout-sm="column">
                   <md-input-container class="md-block" flex>
                     <label translate="DOCUMENTS_TABLE_INV_NO_LABEL"></label>
                     <input ng-model="$ctrl.document.invNo" required md-maxlength="50" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
@@ -29,7 +32,7 @@
                     <input ng-model="$ctrl.document.gross" type="number" step="0.01" disabled>
                   </md-input-container>
                 </div>
-                <div layout="row" layout-xs="column">
+                <div layout="row" layout-xs="column" layout-sm="column">
                   <form ng-submit="$event.preventDefault()">
                     <span>
                       <md-autocomplete
@@ -70,7 +73,7 @@
             </md-card-header>
             <md-card-content>
               <div layout="column">
-                <div layout="row" layout-xs="column">
+                <div layout="row" layout-xs="column" layout-sm="column">
                   <md-input-container class="md-block" flex>
                     <label translate="DOCUMENTS_TABLE_SELLERS_NAME_LABEL"></label>
                     <input ng-model="$ctrl.document.sellersName" required md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
@@ -84,7 +87,7 @@
                     <input ng-model="$ctrl.document.sellersAddress" required md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
                   </md-input-container>
                 </div>
-                <div layout="row" layout-xs="column">
+                <div layout="row" layout-xs="column" layout-sm="column">
                   <md-input-container class="md-block" flex>
                     <label translate="DOCUMENTS_TABLE_BANK_ACC_NO_LABEL"></label>
                     <input ng-model="$ctrl.document.bankAccNo" md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
@@ -102,7 +105,7 @@
             <md-card-header translate="DOCUMENT_WORKFLOW_CARD_TITLE">
             </md-card-header>
             <md-card-content>
-              <div layout="row" layout-xs="column">
+              <div layout="row" layout-xs="column" layout-sm="column">
                 <md-input-container class="md-block" flex>
                   <label translate="DOCUMENTS_TABLE_STATUS_LABEL"></label>
                   <input ng-model="$ctrl.document.status" disabled>
@@ -116,6 +119,7 @@
           </md-card>
         
         </div>
+        
         <md-card-actions layout="column">
           <md-button ng-click="$ctrl.saveDocument()" translate="SAVE_LABEL" aria-label="{{'SAVE_LABEL' | translate}}" class="md-raised"
           	ng-show="$ctrl.Authentication.enableEdit && $ctrl.document.status == 'nowy'" ng-disabled="!documentForm.$dirty"></md-button>
@@ -125,7 +129,8 @@
           <md-button href="#!/docstages/{{$ctrl.document.id}}" translate="DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL" aria-label="{{'DOCUMENT_DETAILS_WORKFLOW_BUTTON_LABEL'}} | translate" class="md-raised"></md-button>
           <md-button href="#!/documents" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised">
         </md-card-actions>
-      </md-card-content>
-    </md-card>
-  </form>
-</md-content>
+        
+      </div>
+    </md-card-content>
+  </md-card>
+</form>
