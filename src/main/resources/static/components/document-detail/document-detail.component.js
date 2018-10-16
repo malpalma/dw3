@@ -15,6 +15,13 @@ angular.module('documentDetail')
 	    		self.document.status = 'nowy';
 	    	} else {
 			    self.document = Document.getDocument().get({id: $routeParams.id});
+				  if(!self.Authentication.authenticated) {
+					  Toast.showToast($translate.instant('READ_ONLY') + '. ' + $translate.instant('NOT_LOGGED_IN_INFO'));
+				  } else {
+					  if(!self.Authentication.enableEdit) {
+						  Toast.showToast($translate.instant('READ_ONLY') + '. ' + $translate.instant('NO_EDIT_PERMISSION'));
+					  }
+				  }
 	    	}
 		    
 		    self.paymentMethodList;

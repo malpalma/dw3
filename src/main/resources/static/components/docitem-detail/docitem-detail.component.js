@@ -32,6 +32,13 @@ angular.module('docItemDetail')
 			  self.docItem.discount = 0;
 		  } else {
 			  self.docItem = DocItem.getItem().get({id: $routeParams.id});
+			  if(!self.Authentication.authenticated) {
+				  Toast.showToast($translate.instant('READ_ONLY') + '. ' + $translate.instant('NOT_LOGGED_IN_INFO'));
+			  } else {
+				  if(!self.Authentication.enableEdit) {
+					  Toast.showToast($translate.instant('READ_ONLY') + '. ' + $translate.instant('NO_EDIT_PERMISSION'));
+				  }
+			  }
 		  }
 		  
 		  self.unitTypeList;

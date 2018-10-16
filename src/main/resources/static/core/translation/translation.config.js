@@ -140,6 +140,10 @@ angular.module('core.translation').
 		  CONFIRM_CANCEL_LABEL: 'Anuluj',
 		  
 		  ERROR: 'Wystąpił błąd',
+		  READ_ONLY: 'Dane dostępne tylko do odczytu',
+		  NOT_LOGGED_IN_INFO: 'Nie jesteś zalogowany',
+		  NO_EDIT_PERMISSION: 'Nie masz uprawnień do edycji',
+		  NO_ACCEPT_PERMISSION: 'Nie masz uprawnień do akceptacji',
 	  });
 	  
 	  $translateProvider.translations('en', {
@@ -280,6 +284,10 @@ angular.module('core.translation').
 		  CONFIRM_CANCEL_LABEL: 'Cancel',
 
 		  ERROR: 'Error occured',
+		  READ_ONLY: 'Data available for read only',
+		  NOT_LOGGED_IN_INFO: 'You are not logged in',
+		  NO_EDIT_PERMISSION: 'You do not have permission to edit',
+		  NO_ACCEPT_PERMISSION: 'You do not have permission to accept',
 	  });
 	  
 	  $translateProvider.useSanitizeValueStrategy('escape');

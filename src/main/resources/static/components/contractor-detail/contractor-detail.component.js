@@ -14,6 +14,13 @@ angular.module('contractorDetail')
 			  self.contractor = {};
 		  } else {
 			  self.contractor = Contractor.getContractor().get({id: $routeParams.id});
+			  if(!self.Authentication.authenticated) {
+				  Toast.showToast($translate.instant('READ_ONLY') + '. ' + $translate.instant('NOT_LOGGED_IN_INFO'));
+			  } else {
+				  if(!self.Authentication.enableEdit) {
+					  Toast.showToast($translate.instant('READ_ONLY') + '. ' + $translate.instant('NO_EDIT_PERMISSION'));
+				  }
+			  }
 		  }
 		  
 		  self.saveContractor = function() {

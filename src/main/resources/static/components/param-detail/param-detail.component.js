@@ -17,6 +17,13 @@ angular.module('paramDetail')
 			  self.param.value = 0;
 		  } else {
 			  self.param = Param.getParam().get({id: $routeParams.id});
+			  if(!self.Authentication.authenticated) {
+				  Toast.showToast($translate.instant('READ_ONLY') + '. ' + $translate.instant('NOT_LOGGED_IN_INFO'));
+			  } else {
+				  if(!self.Authentication.enableEdit) {
+					  Toast.showToast($translate.instant('READ_ONLY') + '. ' + $translate.instant('NO_EDIT_PERMISSION'));
+				  }
+			  }
 		  }
 		  
 		  self.saveParam = function() {

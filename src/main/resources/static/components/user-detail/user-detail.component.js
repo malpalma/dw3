@@ -12,8 +12,20 @@ angular.module('userDetail')
 		  
 		  if($routeParams.id == 0) {
 			  self.user = {};
+			  // can not be null in database
+			  self.user.active = false;
+			  self.user.canEdit = false;
+			  self.user.canAccept = false;
+			  self.user.isAdmin = false;
 		  } else {
 			  self.user = User.getUser().get({id: $routeParams.id});
+			  if(!self.Authentication.authenticated) {
+				  Toast.showToast($translate.instant('READ_ONLY') + '. ' + $translate.instant('NOT_LOGGED_IN_INFO'));
+			  } else {
+				  if(!self.Authentication.enableEdit) {
+					  Toast.showToast($translate.instant('READ_ONLY') + '. ' + $translate.instant('NO_EDIT_PERMISSION'));
+				  }
+			  }
 		  }
 		  
 		  self.saveUser = function() {
