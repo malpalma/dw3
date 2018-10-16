@@ -3,8 +3,8 @@
 angular.module('documentDetail')
   .component('documentDetail', {
 	  templateUrl: 'components/document-detail/document-detail.template.html',
-	  controller: ['$routeParams', '$translate', 'Document', 'Param', 'Authentication', 'Toast', 
-		  function DocumentDetailController($routeParams, $translate, Document, Param, Authentication, Toast) {
+	  controller: ['$routeParams', '$translate', 'Document', 'Param', 'Authentication', 'Toast', 'Contractor',
+		  function DocumentDetailController($routeParams, $translate, Document, Param, Authentication, Toast, Contractor) {
 	    	var self = this;
 	    	
 	    	self.Authentication = Authentication;
@@ -64,6 +64,46 @@ angular.module('documentDetail')
 //	    		alert(message);
 //	    	};
 	    	
+		    self.contractorList;
+		    self.searchTextContractorAutocomplete;
+		    self.selectedItemContractorAutocomplete;
+		    
+		    self.getContractors = function() {
+		    	Contractor.getContractors().query()
+		    		.$promise
+		    			.then(function(response) {
+		    				self.contractorList = response;
+		    			})
+		    			.catch(function(reason) {
+		    				console.log('CATCH in documentDetail component, Contractor.getContractors().query():');
+		    				console.log(reason);
+		    				Toast.showErrorToast($translate.instant('ERROR'));
+		    			})
+		    }
+		    
+		    self.getContractors();
+	    	
+	    	self.selectedItemChangeContractorAutocomplete = function(contractor) {
+	    		if(self.selectedItemContractorAutocomplete != null) {
+		    		self.document.sellersName = contractor.name;
+		    		self.document.sellersRegNumber = contractor.regNumber;
+		    		self.document.sellersAddress = contractor.address;
+		    		self.document.sellersContactDetails = contractor.contactDetails;
+	    		}
+	    	};
+	    	
+	    	self.querySearchContractor = function(query) {
+	    		var results = query ? self.contractorList.filter(self.createFilterForContractor(query)) : self.contractorList;
+	    		return results;
+	    	};
+	    	
+	    	self.createFilterForContractor = function(query) {
+	    		var lowercaseQuery = query.toLowerCase();
+	    		return function filterFn(contractor) {
+	    			return (contractor.name.toLowerCase().indexOf(lowercaseQuery) === 0);
+	    		};
+	    	};
+
 	    	self.saveDocument = function() {
 	    		Document.saveDocument().save(self.document)
 	    			.$promise

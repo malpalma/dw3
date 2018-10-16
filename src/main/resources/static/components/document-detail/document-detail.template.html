@@ -74,6 +74,35 @@
             <md-card-content>
               <div layout="column">
                 <div layout="row" layout-xs="column" layout-sm="column">
+                  <form ng-submit="$event.preventDefault()">
+                    <span>
+                      <md-autocomplete
+                          id="custom-template"
+                          md-selected-item="$ctrl.selectedItemContractorAutocomplete"
+                          md-selected-item-change="$ctrl.selectedItemChangeContractorAutocomplete(contractor)"
+                          md-search-text="$ctrl.searchTextContractorAutocomplete"
+                          md-items="contractor in $ctrl.querySearchContractor($ctrl.searchTextContractorAutocomplete)"
+                          md-item-text="contractor.name"
+                          md-min-length="0"
+                          placeholder="{{'PICK_CONTRACTOR_LABEL' | translate}}"
+                          md-menu-class="autocomplete-custom-template"
+                          md-menu-container-class="custom-container"
+                          ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
+                        <md-item-template>
+                          <span class="item-title">
+                            <span md-highlight-text="$ctrl.searchTextContractorAutocomplete" md-highlight-flags="^i">{{contractor.name}}</span>
+                          </span>
+                          <span class="item-metadata">
+                            <span ng-show="contractor.regNumber != null">{{'CONTRACTORS_TABLE_REG_NUMBER_LABEL' | translate}}: <strong>{{contractor.regNumber}}</strong></span>
+                            <span ng-show="contractor.address != null">{{'CONTRACTORS_TABLE_ADDRESS_LABEL' | translate}}: <strong>{{contractor.address}}</strong></span>
+                          </span>
+                        </md-item-template>
+                        <md-not-found>
+                          <span translate="PICK_NOT_FOUND"></span>
+                        </md-not-found>
+                      </md-autocomplete>
+                    </span>
+                  </form>
                   <md-input-container class="md-block" flex>
                     <label translate="DOCUMENTS_TABLE_SELLERS_NAME_LABEL"></label>
                     <input ng-model="$ctrl.document.sellersName" required md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
@@ -82,12 +111,12 @@
                     <label translate="DOCUMENTS_TABLE_SELLERS_REG_NUMBER_LABEL"></label>
                     <input ng-model="$ctrl.document.sellersRegNumber" md-maxlength="30" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
                   </md-input-container>
+                </div>
+                <div layout="row" layout-xs="column" layout-sm="column">
                   <md-input-container class="md-block" flex>
                     <label translate="DOCUMENTS_TABLE_SELLERS_ADDRESS_LABEL"></label>
                     <input ng-model="$ctrl.document.sellersAddress" required md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">
                   </md-input-container>
-                </div>
-                <div layout="row" layout-xs="column" layout-sm="column">
                   <md-input-container class="md-block" flex>
                     <label translate="DOCUMENTS_TABLE_BANK_ACC_NO_LABEL"></label>
                     <input ng-model="$ctrl.document.bankAccNo" md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableEdit || $ctrl.document.status != 'nowy'">

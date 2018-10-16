@@ -42,7 +42,7 @@
                 </form>
                 <md-input-container class="md-block" flex>
                   <label translate="DOCITEM_TABLE_UNIT_TYPE_LABEL"></label>
-                  <input ng-model="$ctrl.docItem.unitType" md-maxlength="100" required disabled>
+                  <input ng-model="$ctrl.docItem.unitType" md-maxlength="100" required ng-disabled="!$ctrl.Authentication.enableEdit">
                 </md-input-container>
               </div>
               <md-input-container class="md-block" flex>
