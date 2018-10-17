@@ -1,5 +1,7 @@
 <md-content>
-  <document-header></document-header>
+  <div ng-show="$ctrl.path.indexOf('docsums') > 0">
+    <document-header></document-header>
+  </div>
   <md-card>
 
     <md-card-header>
@@ -7,6 +9,10 @@
         <span translate="DOCUMENT_DETAILS_SUMS_BUTTON_LABEL" class="md-title"></span>
       </md-card-header-text>
     </md-card-header>
+
+	<md-card-actions layout="row" layout-align="start" layout-xs="column" ng-show="$ctrl.path.indexOf('docsums') > 0">
+      <md-button ng-click="$ctrl.$window.history.back()" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
+	</md-card-actions>
 
     <md-card-content>
     <md-content>

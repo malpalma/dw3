@@ -50,7 +50,7 @@
           <md-button ng-click="$ctrl.saveStage()" translate="SAVE_LABEL" aria-label="{{'SAVE_LABEL' | translate}}" class="md-raised"
           		ng-show="$ctrl.Authentication.enableAccept" ng-disabled="docStageForm.$invalid">
           </md-button>
-          <md-button href="#!/docstages/{{$ctrl.docId}}" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
+          <md-button ng-click="$ctrl.$window.history.back()" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
         </md-card-actions>
 
       </div>

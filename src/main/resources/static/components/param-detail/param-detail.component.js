@@ -3,13 +3,14 @@
 angular.module('paramDetail')
   .component('paramDetail', {
 	  templateUrl: 'components/param-detail/param-detail.template.html',
-	  controller: ['$routeParams', 'Param', 'Authentication', 'Toast', '$translate', 
-		  		function ParamDetailController($routeParams, Param, Authentication, Toast, $translate) {
+	  controller: ['$routeParams', 'Param', 'Authentication', 'Toast', '$translate', '$window',
+		  		function ParamDetailController($routeParams, Param, Authentication, Toast, $translate, $window) {
 		  var self = this;
 		  
 		  self.Authentication = Authentication;
 		  self.Toast = Toast;
 		  self.type = $routeParams.type;
+		  self.$window = $window;
 		  
 		  if($routeParams.id == 0) {
 			  self.param = {};

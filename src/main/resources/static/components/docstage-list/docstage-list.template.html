@@ -36,7 +36,7 @@
 	   			||
 	   			$ctrl.Authentication.session.isAdmin == 'true')">
 	  </md-button>
-      <md-button href="#!/documents" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
+      <md-button ng-click="$ctrl.$window.history.back()" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
 	</md-card-actions>
 	
     <md-card-content>

@@ -3,12 +3,13 @@
 angular.module('documentDetail')
   .component('documentDetail', {
 	  templateUrl: 'components/document-detail/document-detail.template.html',
-	  controller: ['$routeParams', '$translate', 'Document', 'Param', 'Authentication', 'Toast', 'Contractor',
-		  function DocumentDetailController($routeParams, $translate, Document, Param, Authentication, Toast, Contractor) {
+	  controller: ['$routeParams', '$translate', 'Document', 'Param', 'Authentication', 'Toast', 'Contractor', '$window',
+		  function DocumentDetailController($routeParams, $translate, Document, Param, Authentication, Toast, Contractor, $window) {
 	    	var self = this;
 	    	
 	    	self.Authentication = Authentication;
 	    	self.Toast = Toast;
+	    	self.$window = $window;
 	    	
 	    	if($routeParams.id == 0) {
 	    		self.document = {};

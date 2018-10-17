@@ -3,13 +3,14 @@
 angular.module('docItemList')
   .component('docItemList', {
 	  templateUrl: 'components/docitem-list/docitem-list.template.html',
-	  controller: ['$routeParams', 'DocItem', 'NgTableParams', 'Authentication', 'Toast', '$translate', '$mdDialog', 'Document', 
-		  function DocItemListController($routeParams, DocItem, NgTableParams, Authentication, Toast, $translate, $mdDialog, Document) {
+	  controller: ['$routeParams', 'DocItem', 'NgTableParams', 'Authentication', 'Toast', '$translate', '$mdDialog', 'Document', '$window',
+		  function DocItemListController($routeParams, DocItem, NgTableParams, Authentication, Toast, $translate, $mdDialog, Document, $window) {
 		  var self = this;
 		  
 		  self.Authentication = Authentication;
 		  self.Toast = Toast;
 		  self.docId = $routeParams.docId;
+		  self.$window = $window;
 		  
 		  Document.getDocStatus().charTable({id: self.docId})
 		  	.$promise

@@ -37,7 +37,7 @@
           <md-button ng-click="$ctrl.saveContractor()" translate="SAVE_LABEL" aria-label="{{'SAVE_LABEL' | translate}}" class="md-raised"
           	ng-show="$ctrl.Authentication.enableEdit" ng-disabled="!contractorForm.$dirty || contractorForm.$invalid">
           </md-button>
-          <md-button href="#!/contractors" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
+          <md-button ng-click="$ctrl.$window.history.back()" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
         </md-card-actions>
 
       </div>

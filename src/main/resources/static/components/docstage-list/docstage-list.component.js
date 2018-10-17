@@ -3,13 +3,14 @@
 angular.module('docStageList').
   component('docStageList', {
 	  templateUrl: 'components/docstage-list/docstage-list.template.html',
-	  controller: ['$routeParams', 'DocStage', 'NgTableParams', 'Document', 'Authentication', 'Toast', '$translate', 
-		  	function DocStageListController($routeParams, DocStage, NgTableParams, Document, Authentication, Toast, $translate) {
+	  controller: ['$routeParams', 'DocStage', 'NgTableParams', 'Document', 'Authentication', 'Toast', '$translate', '$window',
+		  	function DocStageListController($routeParams, DocStage, NgTableParams, Document, Authentication, Toast, $translate, $window) {
 		  var self = this;
 		  
 		  self.Authentication = Authentication;
 		  self.Toast = Toast;
 		  self.docId = $routeParams.docId;
+		  self.$window = $window;
 		  self.document = Document.getDocument().get({id: self.docId});
 		  
 		  self.getDocStages = function() {

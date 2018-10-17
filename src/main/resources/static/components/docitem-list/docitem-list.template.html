@@ -11,7 +11,7 @@
 	  <md-button href="#!/docitems/0/docid/{{$ctrl.docId}}" translate="NEW_LABEL" aria-label="{{'NEW_LABEL' | translate}}" class="md-raised"
 	  	ng-show="$ctrl.Authentication.enableEdit && $ctrl.docStatus == 'nowy'">
 	  </md-button>
-      <md-button href="#!/documents" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
+      <md-button ng-click="$ctrl.$window.history.back()" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
 	</md-card-actions>
     
     <md-card-content>

@@ -24,6 +24,7 @@ angular.module('myApp', [
   'paramList',
   'paramDetail',
   'authenticationToolbar',
+  'notFound',
   'myApp.version'
 ])
 .config([
@@ -51,6 +52,9 @@ angular.module('myApp', [
 		    .setDefaultTheme('default');
 		  
 		  $routeProvider
+		  	.when('/', {
+		  		template: '<document-list></document-list>'
+		  	})
 		    .when('/documents', {
 		    	template: '<document-list></document-list>'
 		    })
@@ -93,7 +97,10 @@ angular.module('myApp', [
 		    .when('/params/:type/id/:id', {
 		    	template: '<param-detail></param-detail>'
 		    })
-		    .otherwise('/documents');
+		    .when('/error', {
+		    	template: '<not-found></not-found>'
+		    })
+		    .otherwise('/error');
 }])
 .run(['$http', '$cookies', function($http, $cookies) {
 	$http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;

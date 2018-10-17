@@ -3,8 +3,8 @@
 angular.module('contractorDetail')
   .component('contractorDetail', {
 	  templateUrl: 'components/contractor-detail/contractor-detail.template.html',
-	  controller: ['$routeParams', 'Contractor', 'Authentication', 'Toast', '$translate', 
-		  		function ContractorDetailController($routeParams, Contractor, Authentication, Toast, $translate) {
+	  controller: ['$routeParams', 'Contractor', 'Authentication', 'Toast', '$translate', '$window',
+		  		function ContractorDetailController($routeParams, Contractor, Authentication, Toast, $translate, $window) {
 		  var self = this;
 		  
 		  self.Authentication = Authentication;

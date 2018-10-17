@@ -144,6 +144,8 @@ angular.module('core.translation').
 		  NOT_LOGGED_IN_INFO: 'Nie jesteś zalogowany',
 		  NO_EDIT_PERMISSION: 'Nie masz uprawnień do edycji',
 		  NO_ACCEPT_PERMISSION: 'Nie masz uprawnień do akceptacji',
+		  
+		  NOT_FOUND_INFO: 'Nie znaleziono strony..',
 	  });
 	  
 	  $translateProvider.translations('en', {
@@ -288,6 +290,8 @@ angular.module('core.translation').
 		  NOT_LOGGED_IN_INFO: 'You are not logged in',
 		  NO_EDIT_PERMISSION: 'You do not have permission to edit',
 		  NO_ACCEPT_PERMISSION: 'You do not have permission to accept',
+
+		  NOT_FOUND_INFO: 'Page not found..',
 	  });
 	  
 	  $translateProvider.useSanitizeValueStrategy('escape');

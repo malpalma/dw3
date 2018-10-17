@@ -3,14 +3,15 @@
 angular.module('docStageDetail')
   .component('docStageDetail', {
 	  templateUrl: 'components/docstage-detail/docstage-detail.template.html',
-	  controller: ['$routeParams', 'DocStage', 'Authentication', 'Toast', '$translate', 'Document', 'User',
-		  		function DocStageDetailController($routeParams, DocStage, Authentication, Toast, $translate, Document, User) {
+	  controller: ['$routeParams', 'DocStage', 'Authentication', 'Toast', '$translate', 'Document', 'User', '$window',
+		  		function DocStageDetailController($routeParams, DocStage, Authentication, Toast, $translate, Document, User, $window) {
 		  var self = this;
 		  
 		  self.Authentication = Authentication;
 		  self.Toast = Toast;
 		  self.docId = $routeParams.docId;
 		  self.action = $routeParams.action;
+		  self.$window = $window;
 		  self.document = Document.getDocument().get({id: self.docId});
 		  
 		  self.docStage = {};

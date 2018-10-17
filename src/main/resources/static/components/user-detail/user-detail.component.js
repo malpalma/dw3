@@ -3,12 +3,13 @@
 angular.module('userDetail')
   .component('userDetail', {
 	  templateUrl: 'components/user-detail/user-detail.template.html',
-	  controller: ['$routeParams', 'User', 'Authentication', 'Toast', '$translate', 
-		  		function UserDetailController($routeParams, User, Authentication, Toast, $translate) {
+	  controller: ['$routeParams', 'User', 'Authentication', 'Toast', '$translate', '$window',
+		  		function UserDetailController($routeParams, User, Authentication, Toast, $translate, $window) {
 		  var self = this;
 		  
 		  self.Authentication = Authentication;
 		  self.Toast = Toast;
+		  self.$window = $window;
 		  
 		  if($routeParams.id == 0) {
 			  self.user = {};
