@@ -9,30 +9,44 @@
     </md-card-header>
 
 	<md-card-actions layout="row" layout-align="start" layout-xs="column">
+<!-- 	init document workflow; only user with edit permission (or admin) can init document workflow  -->
 	  <md-button href="#!/docstages/{{$ctrl.document.id}}/action/send" translate="BUTTON_INIT_DOCUMENT_WORKFLOW" aria-label="{{'BUTTON_INIT_DOCUMENT_WORKFLOW' | translate}}" class="md-raised"
-	  	ng-show="$ctrl.document.status == 'nowy' && $ctrl.Authentication.session.canEdit == 'true'">
+	  	ng-show="$ctrl.document.status == 'nowy' && 
+	  			($ctrl.Authentication.session.canEdit == 'true'
+	  			||
+	  			$ctrl.Authentication.session.isAdmin == 'true')">
 	  </md-button>
+<!-- 	  accept document; only user with accept permission if document was sent to this user, or admin -->
 	  <md-button href="#!/docstages/{{$ctrl.document.id}}/action/send" translate="BUTTON_CONTINUE_DOCUMENT_WORKFLOW" aria-label="{{'BUTTON_CONTINUE_DOCUMENT_WORKFLOW' | translate}}" class="md-raised"
-	   	ng-show="$ctrl.document.status != 'nowy' && 
+	   	ng-show="$ctrl.document.status != 'nowy' && $ctrl.document.status != 'zaakceptowany' && $ctrl.document.status != 'zamkniêty' &&
 	   			(($ctrl.Authentication.session.canAccept == 'true' && $ctrl.Authentication.session.name == $ctrl.document.usern)
 	   			||
 	   			$ctrl.Authentiaction.session.isAdmin == 'true')">
 	  </md-button>
+<!-- 	  final accept (without sending to another user); only user with accept permission if document was sent to this user, 
+or user with accept and edit permission if document is new (because only user with edit permission can finish editing document), or admin -->
 	  <md-button href="#!/docstages/{{$ctrl.document.id}}/action/accept" translate="BUTTON_DOCUMENT_FINAL_ACCEPT" aria-label="{{'BUTTON_DOCUMENT_FINAL_ACCEPT' | translate}}" class="md-raised"
 	   	ng-show="$ctrl.document.status != 'zaakceptowany' && $ctrl.document.status != 'zamkniêty' &&
-	   			(($ctrl.Authentication.session.canAccept == 'true' && ($ctrl.Authentication.session.name == $ctrl.document.usern || $ctrl.document.status == 'nowy'))
+	   			(($ctrl.Authentication.session.canAccept == 'true' && $ctrl.Authentication.session.name == $ctrl.document.usern)
+	   			||
+	   			($ctrl.document.status == 'nowy' && $ctrl.Authentication.session.canAccept == 'true' && $ctrl.Authentication.session.canEdit == 'true')
 	   			||
 	   			$ctrl.Authentication.session.isAdmin == 'true')">
 	  </md-button>
+<!-- 	  reject to selected user; only user with accept permission if document was sent to this user, or admin -->
 	  <md-button href="#!/docstages/{{$ctrl.document.id}}/action/reject" translate="BUTTON_DOCUMENT_REJECT" aria-label="{{'BUTTON_DOCUMENT_REJECT' | translate}}" class="md-raised"
-	   	ng-show="$ctrl.document.status != 'nowy' &&
+	   	ng-show="$ctrl.document.status != 'nowy' && $ctrl.document.status != 'zaakceptowany' && $ctrl.document.status != 'zamkniêty' &&
 	   			(($ctrl.Authentication.session.canAccept == 'true' && $ctrl.Authentication.session.name == $ctrl.document.usern)
 	   			||
 	   			$ctrl.Authentiaction.session.isAdmin == 'true')">
 	  </md-button>
+<!-- 	  close document (= closing workflow without accept); only user with accept permission if document was sent to this user, 
+or user with accept and edit permission if document is new, or admin -->
 	  <md-button href="#!/docstages/{{$ctrl.document.id}}/action/close" translate="BUTTON_DOCUMENT_CLOSE" aria-label="{{'BUTTON_DOCUMENT_CLOSE' | translate}}" class="md-raised"
 	   	ng-show="$ctrl.document.status != 'zaakceptowany' && $ctrl.document.status != 'zamkniêty' &&
-	   			(($ctrl.Authentication.session.canAccept == 'true' && ($ctrl.Authentication.session.name == $ctrl.document.usern || $ctrl.document.status == 'nowy'))
+	   			(($ctrl.Authentication.session.canAccept == 'true' && $ctrl.Authentication.session.name == $ctrl.document.usern)
+	   			||
+	   			($ctrl.document.status == 'nowy' && $ctrl.Authentication.session.canAccept == 'true' && $ctrl.Authentication.session.canEdit == 'true')
 	   			||
 	   			$ctrl.Authentication.session.isAdmin == 'true')">
 	  </md-button>

@@ -9,6 +9,7 @@ angular.module('contractorDetail')
 		  
 		  self.Authentication = Authentication;
 		  self.Toast = Toast;
+		  self.$window = $window;
 		  
 		  if($routeParams.id == 0) {
 			  self.contractor = {};

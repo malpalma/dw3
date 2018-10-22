@@ -89,7 +89,7 @@ angular.module('core.translation').
 		  DOCSTAGE_TABLE_DATE_LABEL: 'Data',
 		  DOCSTAGE_TABLE_COMMENTS_LABEL: 'Uwagi',
 		  
-		  BUTTON_INIT_DOCUMENT_WORKFLOW: 'Przekaż do akceptacji',
+		  BUTTON_INIT_DOCUMENT_WORKFLOW: 'Przekaż do akceptacji do wybranej osoby',
 		  BUTTON_CONTINUE_DOCUMENT_WORKFLOW: 'Zaakceptuj i przekaż do następnej osoby',
 		  BUTTON_DOCUMENT_FINAL_ACCEPT: 'Zaakceptuj ostatecznie',
 		  BUTTON_DOCUMENT_CLOSE: 'Zakończ obieg bez akceptacji',
@@ -235,7 +235,7 @@ angular.module('core.translation').
 		  DOCSTAGE_TABLE_DATE_LABEL: 'Date',
 		  DOCSTAGE_TABLE_COMMENTS_LABEL: 'Comments',
 
-		  BUTTON_INIT_DOCUMENT_WORKFLOW: 'Forward for acceptance',
+		  BUTTON_INIT_DOCUMENT_WORKFLOW: 'Forward for acceptance to selected user',
 		  BUTTON_CONTINUE_DOCUMENT_WORKFLOW: 'Accept and forward to another user',
 		  BUTTON_DOCUMENT_FINAL_ACCEPT: 'Accept final',
 		  BUTTON_DOCUMENT_CLOSE: 'Finish workflow without accept',

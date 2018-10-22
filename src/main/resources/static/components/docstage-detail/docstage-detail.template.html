@@ -25,7 +25,6 @@
                    		  md-item-text="user.name"
                    		  md-min-length="0"
                    		  placeholder="{{'PICK_USER_LABEL' | translate}}"
-                   		  ng-disabled="!$ctrl.Authentication.enableAccept"
                    		  ng-required="$ctrl.action == 'send' || $ctrl.action == 'reject'">
                       <md-item-template>
                         <span md-highlight-text="$ctrl.searchTextUserAutocomplete" md-highlight-flags="^i">{{user.name}}</span>
@@ -40,7 +39,7 @@
               </div>
               <md-input-container class="md-block" flex>
                 <label translate="DOCSTAGE_TABLE_COMMENTS_LABEL"></label>
-                <input ng-model="$ctrl.docStage.comments" md-maxlength="255" ng-disabled="!$ctrl.Authentication.enableAccept">
+                <input ng-model="$ctrl.docStage.comments" md-maxlength="255">
               </md-input-container>
             </md-card-content>
           </md-card>
@@ -48,7 +47,7 @@
         
         <md-card-actions layout="column">
           <md-button ng-click="$ctrl.saveStage()" translate="SAVE_LABEL" aria-label="{{'SAVE_LABEL' | translate}}" class="md-raised"
-          		ng-show="$ctrl.Authentication.enableAccept" ng-disabled="docStageForm.$invalid">
+          		ng-disabled="docStageForm.$invalid">
           </md-button>
           <md-button ng-click="$ctrl.$window.history.back()" translate="BACK_LABEL" aria-label="{{'BACK_LABEL' | translate}}" class="md-raised"></md-button>
         </md-card-actions>
